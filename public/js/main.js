@@ -18319,6 +18319,7 @@ exports.default = function (input) {
 
 var cityData = __webpack_require__(18);
 var VueGoogleMaps = __webpack_require__(19);
+var vClickOutside = __webpack_require__(44);
 
 Vue.use(VueGoogleMaps, {
 	load: {
@@ -18328,9 +18329,9 @@ Vue.use(VueGoogleMaps, {
 	// installComponents: false,
 });
 
-$(document).ready(function () {
-	// Vue.component('google-map', VueGoogleMaps.map);
+Vue.use(vClickOutside);
 
+$(document).ready(function () {
 	Vue.component('city-guide', {
 		data: function () {
 			return {
@@ -18355,8 +18356,17 @@ $(document).ready(function () {
 		},
 		template: '#city-guide',
 		mounted: function () {},
-		updated: function () {
-			this.$parent.initMap();
+		updated: function () {},
+		methods: {
+			closeButton: function () {
+				this.$parent.clearActive();
+			},
+
+			onClickOutside: function (e) {
+				if (!e.target.classList.contains('nav-list-item__link')) {
+					this.$parent.clearActive();
+				}
+			}
 		}
 	});
 
@@ -18397,9 +18407,7 @@ $(document).ready(function () {
 
 			extractCities: function (cityData) {
 				this.cities = Object.keys(cityData);
-			},
-
-			initMap: function () {}
+			}
 		},
 		mounted: function () {
 			this.extractCities(cityData);
@@ -20426,6 +20434,47 @@ if (false) {
   }
 }
 
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+!function (n, e) {
+  "object" == ( false ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? module.exports = e() :  true ? !(__WEBPACK_AMD_DEFINE_FACTORY__ = (e),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : n["v-click-outside"] = e();
+}(undefined, function () {
+  "use strict";
+  var n = { instances: [], events: "ontouchstart" in window || navigator.msMaxTouchPoints > 0 ? ["touchstart", "click"] : ["click"] };n.onEvent = function (e) {
+    n.instances.forEach(function (n) {
+      var t = n.el,
+          i = n.fn;e.target === t || t.contains(e.target) || i && i(e);
+    });
+  }, n.bind = function (e, t) {
+    n.instances.push({ el: e, fn: t.value }), 1 === n.instances.length && n.events.forEach(function (e) {
+      return document.addEventListener(e, n.onEvent);
+    });
+  }, n.update = function (e, t) {
+    if ("function" != typeof t.value) throw new Error("Argument must be a function");n.instances.find(function (n) {
+      return n.el === e;
+    }).fn = t.value;
+  }, n.unbind = function (e) {
+    var t = n.instances.findIndex(function (n) {
+      return n.el === e;
+    });t >= 0 && n.instances.splice(t, 1), 0 === n.instances.length && n.events.forEach(function (e) {
+      return document.removeEventListener(e, n.onEvent);
+    });
+  };var e = "undefined" != typeof window ? n : {};return { install: function install(n) {
+      n.directive("click-outside", e);
+    }, directive: e };
+});
+
 /***/ })
 /******/ ]);
 $(document).ready(function() {
@@ -20433,8 +20482,10 @@ $(document).ready(function() {
 		navigation: true,
 		scrollingSpeed: 600,
 		// css3: true,
-		easing: 'easeOutBack',
+		autoScrolling: true,
+		easing: 'easeInOutCubic',
 		responsiveWidth: '620',
+		// normalScrollElements: '.hero',
 	});
 });
 
@@ -20442,12 +20493,29 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	var hoverDot = $('.hover-dot');
+	var closeBtn = $('.tooltip__close');
 
 	hoverDot.on('click', function() {
-		console.log('test');
-		$(this).toggleClass('paused');
-		$(this).children('.tooltip').toggleClass('active');
+		var id = $(this).attr('id');
+		console.log(id);
+		$(this).children('.tooltip')
+			.attr('data-parent', id)
+			.appendTo($(this).parent())
+			.addClass('active');
+
+		$(this).addClass('paused');
 	});
+
+	closeBtn.on('click', function() {
+		var parentDot = '#'+ $(this).parent('.tooltip').data('parent');
+		$(parentDot).removeClass('paused');
+
+		$(this).parent('.tooltip')
+			.removeClass('active')
+			.appendTo(parentDot);
+	});
+
+
 });
 
 //# sourceMappingURL=main.js.map

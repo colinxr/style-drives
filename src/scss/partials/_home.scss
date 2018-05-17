@@ -17,42 +17,73 @@ nav {
     margin: 0 auto;
     text-align: center;
 
-    * { display: inline; }
+  	* { display: inline; }
+  }
+}
 
-    .nav__list {
-			display: none;
-      list-style-type: none;
-      margin-left: 0;
+.nav__list {
+	display: none;
+	list-style-type: none;
+	margin-left: 0;
+	text-transform: capitalize;
+
+	@include tablet { display: inline-block; }
+
+	li {
+		display: inline;
+
+		& + li { margin-left: 25px; }
+	}
+
+	a {
+		color: white;
+		text-decoration: none;
+		transition: color .15s;
+
+		&:hover {
+			color: darken(white, 20%);
+		}
+	}
+
+	&--main {
+		li {
+			display: block;
+			font-size: 24pt;
+			line-height: 31pt;
+			font-weight: 600;
 			text-transform: capitalize;
 
-			@include tablet { display: inline-block; }
-
-      li {
-        display: inline;
-
-
-      & + li { margin-left: 25px; }
-      }
-
-      a {
-        color: white;
-        text-decoration: none;
-      }
-    }
-  }
-
+			& + li { margin-left: 0; }
+		}
+	}
 }
 
 .hero {
-  background-image: url('../imgs/kia-stinger-hero.jpg');
-  background-position: center center;
-  background-size: cover;
+	&__wrapper {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		height: 100%;
+	}
+
+	&__content {
+		background-color: #4a4a4a;
+		height: 100%;
+	}
+
+	&__img {
+		background-image: url('../imgs/kia-stinger-vertical-1.jpg');
+		background-position: center center;
+		background-size: cover;
+		height: 100%;
+	}
 }
 
 .section {
 	background-color: #fafafa;
-	width: 100vw;
+	filter: grayscale(100%);
 	height: auto;
+	transition: filter .85s;
+	width: 100vw;
 
 	@include tablet { height: calc(100vh - 110px);
 	}
@@ -79,6 +110,10 @@ nav {
     background-size: cover;
   }
 
+	&.active {
+		filter: grayscale(0%);
+	}
+
   &__inset {
     background-position: center center;
     background-size: cover;
@@ -96,6 +131,31 @@ nav {
       background-image: url('../imgs/kia-stinger-5.jpg');
     }
   }
+
+	&--nav {
+		color: white;
+		background-color: lighten(#4a4a4a, 10%);
+		text-align: center;
+
+		ul {
+			max-width: 728px;
+			// margin: 0 auto;
+			list-style-type: none;
+			padding: 0;
+
+
+			a {
+				color: white;
+				text-decoration: none;
+				transition: color .15s;
+
+				&:hover {
+					color: darken(white, 20%);
+				}
+			}
+		}
+	}
+
 }
 
 #fp-nav ul li a span,

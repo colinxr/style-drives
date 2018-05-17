@@ -752,31 +752,56 @@ nav {
     text-align: center; }
     nav .nav__content * {
       display: inline; }
-    nav .nav__content .nav__list {
-      display: none;
-      list-style-type: none;
-      margin-left: 0;
-      text-transform: capitalize; }
-      @media (min-width: 768px) {
-        nav .nav__content .nav__list {
-          display: inline-block; } }
-      nav .nav__content .nav__list li {
-        display: inline; }
-        nav .nav__content .nav__list li + li {
-          margin-left: 25px; }
-      nav .nav__content .nav__list a {
-        color: white;
-        text-decoration: none; }
 
-.hero {
-  background-image: url("../imgs/kia-stinger-hero.jpg");
+.nav__list {
+  display: none;
+  list-style-type: none;
+  margin-left: 0;
+  text-transform: capitalize; }
+  @media (min-width: 768px) {
+    .nav__list {
+      display: inline-block; } }
+  .nav__list li {
+    display: inline; }
+    .nav__list li + li {
+      margin-left: 25px; }
+  .nav__list a {
+    color: white;
+    text-decoration: none;
+    transition: color .15s; }
+    .nav__list a:hover {
+      color: #cccccc; }
+  .nav__list--main li {
+    display: block;
+    font-size: 24pt;
+    line-height: 31pt;
+    font-weight: 600;
+    text-transform: capitalize; }
+    .nav__list--main li + li {
+      margin-left: 0; }
+
+.hero__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%; }
+
+.hero__content {
+  background-color: #4a4a4a;
+  height: 100%; }
+
+.hero__img {
+  background-image: url("../imgs/kia-stinger-vertical-1.jpg");
   background-position: center center;
-  background-size: cover; }
+  background-size: cover;
+  height: 100%; }
 
 .section {
   background-color: #fafafa;
-  width: 100vw;
-  height: auto; }
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  height: auto;
+  transition: -webkit-filter .85s, filter .85s;
+  width: 100vw; }
   @media (min-width: 768px) {
     .section {
       height: calc(100vh - 110px); } }
@@ -796,6 +821,9 @@ nav {
     background-image: url("../imgs/kia-stinger-good-neighbour.jpg");
     background-position: center center;
     background-size: cover; }
+  .section.active {
+    -webkit-filter: grayscale(0%);
+            filter: grayscale(0%); }
   .section__inset {
     background-position: center center;
     background-size: cover;
@@ -809,6 +837,20 @@ nav {
       background-image: url("../imgs/kia-stinger-garrison-bespoke.jpg"); }
     .section__inset.walking {
       background-image: url("../imgs/kia-stinger-5.jpg"); }
+  .section--nav {
+    color: white;
+    background-color: #646464;
+    text-align: center; }
+    .section--nav ul {
+      max-width: 728px;
+      list-style-type: none;
+      padding: 0; }
+      .section--nav ul a {
+        color: white;
+        text-decoration: none;
+        transition: color .15s; }
+        .section--nav ul a:hover {
+          color: #cccccc; }
 
 #fp-nav ul li a span,
 .fp-slidesNav ul li a span {
@@ -836,44 +878,60 @@ nav {
   .hover-dot.paused {
     -webkit-animation-play-state: paused;
             animation-play-state: paused;
-    background-image: none; }
-  .hover-dot .tooltip {
-    background-color: white;
-    border: 5px solid #F04B33;
-    padding: 10px 10px 0;
-    position: absolute;
-    top: 0;
-    transition: all 250ms ease-out;
-    -webkit-transform: scale(0.1);
-            transform: scale(0.1);
+    background-image: none;
     visibility: hidden; }
-    .hover-dot .tooltip::after {
-      content: '';
-      background-color: #F04B33;
-      width: 15px;
-      height: 15px;
-      position: absolute;
-      bottom: -15px; }
-    .hover-dot .tooltip.active {
-      visibility: visible;
-      -webkit-transform: scale(1);
-              transform: scale(1); }
+
+.tooltip {
+  background-color: white;
+  border: 5px solid #F04B33;
+  max-width: 220px;
+  height: auto;
+  padding: 10px 10px 0;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden; }
+  .tooltip.active {
+    visibility: hidden;
+    opacity: 0;
+    -webkit-animation: .4s fadeIn;
+            animation: .4s fadeIn;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards; }
+  .tooltip__close {
+    cursor: pointer;
+    font-weight: 400;
+    position: absolute;
+    right: 5px;
+    transition: color .15s; }
+    .tooltip__close:hover {
+      color: #a3a3a3; }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    visibility: visible;
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    visibility: visible;
+    opacity: 1; } }
+
+[data-parent="moves"] {
+  top: 35%;
+  left: 12%; }
+
+[data-parent="handles"] {
+  bottom: 15%;
+  right: 10%; }
 
 #moves {
   bottom: 46%;
   left: 13%; }
-  .active #moves {
-    -webkit-animation-name: pulse, moves-slide;
-            animation-name: pulse, moves-slide;
-    -webkit-animation-duration: 2500ms, 2650ms;
-            animation-duration: 2500ms, 2650ms;
-    -webkit-animation-iteration-count: infinite, 1;
-            animation-iteration-count: infinite, 1;
-    -webkit-animation-timing-function: linear, ease-out;
-            animation-timing-function: linear, ease-out; }
   #moves .tooltip {
-    top: -200%;
-    left: -85%;
     width: 95px; }
     #moves .tooltip::after {
       content: '';
@@ -883,8 +941,7 @@ nav {
       position: absolute;
       bottom: -15px; }
     #moves .tooltip.active {
-      left: 0;
-      top: -230px; }
+      left: 0; }
 
 @-webkit-keyframes moves-slide {
   0% {
@@ -909,18 +966,7 @@ nav {
 #handles {
   bottom: 32%;
   right: 13%; }
-  .active #handles {
-    -webkit-animation-name: pulse, handles-slide;
-            animation-name: pulse, handles-slide;
-    -webkit-animation-duration: 2500ms, 2650ms;
-            animation-duration: 2500ms, 2650ms;
-    -webkit-animation-iteration-count: infinite, 1;
-            animation-iteration-count: infinite, 1;
-    -webkit-animation-timing-function: linear, ease-out;
-            animation-timing-function: linear, ease-out; }
   #handles .tooltip {
-    top: -164%;
-    left: -155%;
     width: 175px; }
     #handles .tooltip::after {
       content: '';
@@ -930,9 +976,6 @@ nav {
       position: absolute;
       top: -15px;
       right: 15px; }
-    #handles .tooltip.active {
-      left: -155px;
-      top: 30px; }
 
 @-webkit-keyframes handles-slide {
   0% {

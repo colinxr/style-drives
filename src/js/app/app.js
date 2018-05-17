@@ -1,5 +1,6 @@
 var cityData = require('./cityData.js');
 var VueGoogleMaps = require('vue2-google-maps');
+var vClickOutside = require('v-click-outside');
 
 Vue.use(VueGoogleMaps, {
 	load: {
@@ -9,9 +10,9 @@ Vue.use(VueGoogleMaps, {
 	// installComponents: false,
 });
 
-$(document).ready(function() {
-	// Vue.component('google-map', VueGoogleMaps.map);
+Vue.use(vClickOutside);
 
+$(document).ready(function() {
 	Vue.component('city-guide', {
 		data: function () {
 	    return {
@@ -38,8 +39,18 @@ $(document).ready(function() {
 		mounted: function () {
 		},
 		updated: function() {
-			this.$parent.initMap();
 		},
+		methods: {
+			closeButton: function() {
+				this.$parent.clearActive();
+			},
+
+			onClickOutside: function(e) {
+				if (!e.target.classList.contains('nav-list-item__link')) {
+					this.$parent.clearActive();
+				}
+			}
+		}
 	});
 
 	Vue.component('nav-list-item', {
@@ -80,10 +91,6 @@ $(document).ready(function() {
 
 			extractCities: function(cityData) {
 				this.cities = Object.keys(cityData);
-			},
-
-			initMap: function() {
-
 			},
 		},
 		mounted: function() {

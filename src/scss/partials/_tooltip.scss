@@ -25,41 +25,69 @@
   &.paused {
     animation-play-state:paused;
     background-image: none;
+		visibility: hidden;
   }
 
-  & .tooltip {
-    background-color: white;
-    border: 5px solid $orange;
-    padding: 10px 10px 0;
-    position: absolute;
-    top: 0;
-    transition: all 250ms ease-out;
-    transform: scale(.1);
-    visibility: hidden;
-    &::after {
-      content: '';
-      background-color: $orange;
-      width: 15px;
-      height: 15px;
-      position: absolute;
-      bottom: -15px;
-    }
-    &.active {
-      visibility: visible;
-      transform: scale(1);
-    }
+}
+
+.tooltip {
+	background-color: white;
+	border: 5px solid $orange;
+	max-width: 220px;
+	height: auto;
+	padding: 10px 10px 0;
+	position: absolute;
+	// transition: visibility 0s linear 300ms, opacity 300ms;
+	opacity: 0;
+	visibility: hidden;
+
+	&.active {
+		// transition: visibility 0s linear 300ms, opacity 300ms;
+		visibility: hidden;
+		opacity: 0;
+
+		animation: .4s fadeIn;
+	  animation-fill-mode: forwards;
+	}
+
+	&__close {
+		cursor: pointer;
+		font-weight: 400;
+		position: absolute;
+		right: 5px;
+		transition: color .15s;
+
+		&:hover { color: lighten(#4a4a4a, 35%); }
+	}
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+[data-parent="moves"] {
+	top: 35%;
+	left: 12%;
+}
+
+[data-parent="handles"] {
+	bottom: 15%;
+	right: 10%;
 }
 
 #moves {
   bottom: 46%;
   left: 13%;
 
-  .active & { @include tooltip-anim(moves-slide); }
+  // .active & { @include tooltip-anim(moves-slide); }
 
   & .tooltip {
-    top: -200%;
-    left: -85%;
     width: 95px;
 
     &::after {
@@ -72,7 +100,7 @@
     }
     &.active {
       left: 0;
-      top: -230px;
+      // top: -230px;
     }
   }
  }
@@ -94,11 +122,9 @@
   bottom: 32%;
   right: 13%;
 
-  .active & { @include tooltip-anim(handles-slide); }
+  // .active & { @include tooltip-anim(handles-slide); }
 
   & .tooltip {
-    top: -164%;
-    left: -155%;
     width: 175px;
 
     &::after {
@@ -111,8 +137,6 @@
       right: 15px;
     }
     &.active {
-      left: -155px;
-      top: 30px;
     }
   }
 }
