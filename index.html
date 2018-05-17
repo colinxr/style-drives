@@ -39,30 +39,39 @@
         </ul>
       </div>
     </nav>
+		<div id="fullpage">
+	  	<div class="section hero"></div>
+	  	<div class="section">
+	      <div class="hover-dot" id="moves">
+	        <div class="tooltip">
+	          <strong>Light Moves</strong>
+	          <p>The Stinger comes with adaptive headlights that respond to steering angle and road pitch</p>
+	        </div>
+	      </div>
+	      <div class="hover-dot" id="handles">
+	        <div class="tooltip">
+	          <strong>It's Handled</strong>
+	          <p>Dynamic Torque Vectoring Control automatically applies power and braking force to the appropriate wheels for total stability and performance.</p>
+	        </div>
+	      </div>
+	    </div>
+	  	<div class="section"><div class="section__inset garrison"></div></div>
+	  	<div class="section"></div>
+	    <div class="section"></div>
+	    <div class="section"><div class="section__inset walking"></div></div>
+	    <div class="section"></div>
+			<div class="section section__nav">
+				<ul class="nav__list--main">
+					<nav-list-item
+						v-for="city in cities"
+						v-bind:key="city.id"
+						v-bind:city="city"
+						v-on:click.native="setActive"
+					></nav-list-item>
+				</ul>
+			</div>
+	  </div>
   </div>
-  <div id="fullpage">
-  	<div class="section hero"></div>
-  	<div class="section">
-      <div class="hover-dot" id="moves">
-        <div class="tooltip">
-          <strong>Light Moves</strong>
-          <p>The Stinger comes with adaptive headlights that respond to steering angle and road pitch</p>
-        </div>
-      </div>
-      <div class="hover-dot" id="handles">
-        <div class="tooltip">
-          <strong>It's Handled</strong>
-          <p>Dynamic Torque Vectoring Control automatically applies power and braking force to the appropriate wheels for total stability and performance.</p>
-        </div>
-      </div>
-    </div>
-  	<div class="section"><div class="section__inset garrison"></div></div>
-  	<div class="section"></div>
-    <div class="section"></div>
-    <div class="section"><div class="section__inset walking"></div></div>
-    <div class="section"></div>
-  </div>
-
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="public/js/main.js"></script>
 
