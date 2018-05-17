@@ -1,0 +1,142 @@
+
+.hover-dot {
+  background-image: radial-gradient(
+    $orange,
+    $orange 30%,
+    white 30%,
+    white 55%,
+    $orange 55%,
+    $orange 100%
+  );
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  height: 50px;
+  position: absolute;
+  transition: background-image 1s;
+  width: 50px;
+
+  animation-name: pulse;
+  animation-duration: 2000ms;
+  transform-origin:70% 70%;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  &.paused {
+    animation-play-state:paused;
+    background-image: none;
+  }
+
+  & .tooltip {
+    background-color: white;
+    border: 5px solid $orange;
+    padding: 10px 10px 0;
+    position: absolute;
+    top: 0;
+    transition: all 250ms ease-out;
+    transform: scale(.1);
+    visibility: hidden;
+    &::after {
+      content: '';
+      background-color: $orange;
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      bottom: -15px;
+    }
+    &.active {
+      visibility: visible;
+      transform: scale(1);
+    }
+  }
+}
+
+#moves {
+  bottom: 46%;
+  left: 13%;
+
+  .active & { @include tooltip-anim(moves-slide); }
+
+  & .tooltip {
+    top: -200%;
+    left: -85%;
+    width: 95px;
+
+    &::after {
+      content: '';
+      background-color: $orange;
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      bottom: -15px;
+    }
+    &.active {
+      left: 0;
+      top: -230px;
+    }
+  }
+ }
+
+@keyframes moves-slide {
+  0% {
+    bottom: 47%;
+    left: 9%;
+    opacity: .5;
+  }
+  100% {
+    bottom: 46%;
+    left: 13%;
+    opacity: 1;
+  }
+ }
+
+#handles {
+  bottom: 32%;
+  right: 13%;
+
+  .active & { @include tooltip-anim(handles-slide); }
+
+  & .tooltip {
+    top: -164%;
+    left: -155%;
+    width: 175px;
+
+    &::after {
+      content: '';
+      background-color: $orange;
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      top: -15px;
+      right: 15px;
+    }
+    &.active {
+      left: -155px;
+      top: 30px;
+    }
+  }
+}
+
+@keyframes handles-slide {
+  0% {
+    bottom: 31%;
+    right: 8%;
+    opacity: .5;
+  }
+  100% {
+    bottom: 32%;
+    right: 13%;
+    opacity: 1;
+  }
+ }
+
+@keyframes pulse {
+  0%   { transform: sacale(1); }
+  30%  { transform: scale(1); }
+  40%  { transform: scale(1.08); }
+  50%  { transform: scale(1); }
+  60%  { transform: scale(.98); }
+  70%  { transform: scale(1.05); }
+  80%  { transform: scale(1); }
+  100% { transform: scale(1); }
+}

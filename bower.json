@@ -1,0 +1,25 @@
+{
+  "name": "generic",
+  "version": "1.0.0",
+  "author": "Colin Rbayniuk",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "slick-carousel": "^1.8.1",
+    "fullpage.js": "^2.9.7"
+  },
+  "overrides": {
+    "jquery": {
+      "ignore": "true"
+    },
+    "foundation": {
+      "ignore": "true"
+    }
+  }
+}

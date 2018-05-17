@@ -1,0 +1,104 @@
+* { box-sizing: border-box; }
+
+nav {
+  background-color: black;
+  bottom: 0;
+  color: white;
+  height: 80px;
+  left: 0;
+  right: 0;
+	position: fixed;
+	z-index: 99;
+
+	@include tablet { position: absolute; }
+
+  .nav__content {
+    max-width: 1024px;
+    margin: 0 auto;
+    text-align: center;
+
+    * { display: inline; }
+
+    .nav__list {
+			display: none;
+      list-style-type: none;
+      margin-left: 0;
+			text-transform: capitalize;
+
+			@include tablet { display: inline-block; }
+
+      li {
+        display: inline;
+
+
+      & + li { margin-left: 25px; }
+      }
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+
+}
+
+.hero {
+  background-image: url('../imgs/kia-stinger-hero.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.section {
+	background-color: #fafafa;
+	width: 100vw;
+	height: auto;
+
+	@include tablet { height: calc(100vh - 110px);
+	}
+
+  &:nth-of-type(2) {
+    background-image: url('../imgs/kia-stinger-drake-commissary.jpg');
+    background-position: center center;
+    background-size: cover;
+  }
+
+  &:nth-of-type(4) {
+    background-image: url('../imgs/kia-stinger-3.jpg');
+    background-position: center center;
+    background-size: cover;
+  }
+  &:nth-of-type(5) {
+    background-image: url('../imgs/kia-stinger-bag.jpg');
+    background-position: center center;
+    background-size: cover;
+  }
+  &:nth-of-type(7) {
+    background-image: url('../imgs/kia-stinger-good-neighbour.jpg');
+    background-position: center center;
+    background-size: cover;
+  }
+
+  &__inset {
+    background-position: center center;
+    background-size: cover;
+    border: 1px solid #6a6c6b;
+    height: calc(90% - 110px);
+    margin: 0 auto;
+    width: 90%;
+    transform: translateY(-6%);
+
+    &.garrison {
+      background-image: url('../imgs/kia-stinger-garrison-bespoke.jpg');
+    }
+
+    &.walking {
+      background-image: url('../imgs/kia-stinger-5.jpg');
+    }
+  }
+}
+
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+  background: #eaeaea;
+}

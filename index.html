@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Style Drives - Presented by Kia | Sharp Magazine</title>
+  <meta name="description" content="Style Drives, Presented by Kia">
+  <meta name="author" content="Colin Rabyniuk">
+	<!-- Set character encoding for the document -->
+	<!-- Instruct Internet Explorer to use its latest rendering engine -->
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <link rel="stylesheet" href="public/css/main.css">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div id="app">
+    <city-guide
+      :active="active"
+			:guide="guide"
+      v-on:click.native="clearActive"
+    ></city-guide>
+    <nav>
+      <div class="nav__content">
+        <img src="public/imgs/sharp-logo-white.svg" alt="Sharp Magazine">
+        <ul class="nav__list">
+          <nav-list-item
+            v-for="city in cities"
+            v-bind:key="city.id"
+            v-bind:city="city"
+            v-on:click.native="setActive"
+          ></nav-list-item>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div id="fullpage">
+  	<div class="section hero"></div>
+  	<div class="section">
+      <div class="hover-dot" id="moves">
+        <div class="tooltip">
+          <strong>Light Moves</strong>
+          <p>The Stinger comes with adaptive headlights that respond to steering angle and road pitch</p>
+        </div>
+      </div>
+      <div class="hover-dot" id="handles">
+        <div class="tooltip">
+          <strong>It's Handled</strong>
+          <p>Dynamic Torque Vectoring Control automatically applies power and braking force to the appropriate wheels for total stability and performance.</p>
+        </div>
+      </div>
+    </div>
+  	<div class="section"><div class="section__inset garrison"></div></div>
+  	<div class="section"></div>
+    <div class="section"></div>
+    <div class="section"><div class="section__inset walking"></div></div>
+    <div class="section"></div>
+  </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="public/js/main.js"></script>
+
+	<script type="text/x-template" id="city-guide">
+		<div v-if="active" class="modal" :id="active">
+			<div id="map">
+				<gmap-map :center="guide.map.center" :zoom="13" style="width: 100%; height: 100%;">
+					<GmapMarker
+				    :key="index"
+				    v-for="(m, index) in guide.map.markers"
+				    :position="m.position"
+				    :clickable="true"
+				    :draggable="false"
+						@click="toggleInfoWindow(m,i)"
+				  />
+				</gmap-map>
+			</div>
+			<span class="close">X</span>
+			<div class="modal__content">
+				<h2>{{ guide.hed }}</h2>
+				<h3>{{ guide.dek }}</h3>
+				<div class="modal__content__copy">
+					<img src="" />
+					<p v-html="guide.desc">{{ guide.desc }}</p>
+				</div>
+				<div class="modal__content__fade"></div>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/x-template" id="nav-list-item">
+		<li><a href="#" >{{ city }}</a></li>
+	</script>
+
+
+</body>
+</html>

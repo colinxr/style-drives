@@ -1,0 +1,95 @@
+.modal {
+	background-color: white;
+	border: 5px solid $orange;
+	height: 90%;
+	position: absolute;
+	left: 5%;
+	top: 2%;
+	width: 90%;
+	z-index: 99;
+
+	@include tablet {
+		border: none;
+	}
+
+	&__content {
+		background-color: white;
+		padding: 25px;
+		overflow: hidden;
+		position: relative;
+		z-index: 99;
+
+		@include tablet {
+			border: 5px solid $orange;
+			min-width: 333px;
+			max-width: 400px;
+			height: 75%;
+			width: 30%;
+		}
+
+		img {
+			background-color: gray;
+			height: auto;
+			min-height: 25%;
+			width: 100%;
+		}
+
+		&__copy {
+			height: 90%;
+			overflow: scroll;
+			padding-bottom: 100px;
+
+			-ms-overflow-style: none;  // IE 10+
+	 		overflow: -moz-scrollbars-none;  // Firefox
+			&::-webkit-scrollbar {
+    		display: none;  // Safari and Chrome
+			}
+		}
+
+
+		&__fade {
+			background: linear-gradient(to top,
+				rgba(255,255,255, 1) 20%,
+				rgba(255,255,255, 0) 80%
+				);
+			background-position: fixed;
+			bottom: 0;
+			content: '';
+			height: 25%;
+			left: 0;
+			position: absolute;
+			pointer-events: none; /* so the text is still selectable */
+			width: 100%;
+			z-index:999;
+		}
+
+		h2 { text-transform: capitalize; }
+	}
+
+	#map {
+		position: relative;
+		width: 100%;
+		height: 225px;
+
+		@include tablet {
+			background-color: pink;
+			height: 100%;
+			position: absolute;
+			width: 100%;
+			z-index: -1;
+		}
+	}
+
+	.close {
+		position: absolute;
+		right: 15px;
+		top: 15px;
+		font-weight: bold;
+		cursor: pointer;
+	}
+}
+
+.stop-scroll {
+	height: 100% !important;
+ 	overflow: hidden !important;
+}

@@ -1,0 +1,6 @@
+@mixin tooltip-anim($hotspot) {
+  animation-name: pulse, $hotspot;
+  animation-duration: 2500ms, 2650ms;
+  animation-iteration-count: infinite, 1;
+  animation-timing-function: linear, ease-out;
+}

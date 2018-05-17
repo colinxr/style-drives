@@ -1,0 +1,25 @@
+// @include 'includes/variables';
+
+$orange: #F04B33;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@import 'mixins/animations';
+// @import 'mixins/mediaqueries';
+
+@import 'partials/typography';
+@import 'partials/home';
+@import 'partials/tooltip';
+@import 'partials/modal';
