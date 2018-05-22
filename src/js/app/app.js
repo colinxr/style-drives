@@ -49,6 +49,21 @@ $(document).ready(function() {
 				if (!e.target.classList.contains('nav-list-item__link')) {
 					this.$parent.clearActive();
 				}
+			},
+
+			toggleInfoWindow: function(marker, idx) {
+				this.infoWindowPos = marker.position;
+			 	this.infoContent = marker.infoText;
+
+				//check if its the same marker that was selected if yes toggle
+				if (this.currentMidx == idx) {
+					this.infoWinOpen = !this.infoWinOpen;
+				}
+			 	//if different marker set infowindow to open and reset current marker index
+			 	else {
+					this.infoWinOpen = true;
+					this.currentMidx = idx;
+			 	}
 			}
 		}
 	});
@@ -70,6 +85,10 @@ $(document).ready(function() {
 			visible: false,
 		},
 		methods: {
+			extractCities: function(cityData) {
+				this.cities = Object.keys(cityData);
+			},
+
 			setActive: function(e) {
 				this.active = e.target.textContent;
 				this.visible = true;
@@ -77,7 +96,6 @@ $(document).ready(function() {
 
 				$.fn.fullpage.setAutoScrolling(false);
 				document.body.classList.add('stop-scroll');
-				console.log('stop scorlling');
 			},
 
 			clearActive: function() {
@@ -86,11 +104,6 @@ $(document).ready(function() {
 				this.guide = {};
 				document.body.classList.remove('stop-scroll');
 				$.fn.fullpage.setAutoScrolling(true);
-				console.log('clearing modal');
-			},
-
-			extractCities: function(cityData) {
-				this.cities = Object.keys(cityData);
 			},
 		},
 		mounted: function() {

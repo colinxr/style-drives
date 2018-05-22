@@ -4,3 +4,18 @@
   animation-iteration-count: infinite, 1;
   animation-timing-function: linear, ease-out;
 }
+
+@mixin nav-reset() {
+
+	padding-left: 0;
+
+	li {
+		display: block;
+		font-size: 24pt;
+		line-height: 31pt;
+		font-weight: 600;
+		text-transform: capitalize;
+
+		& + li { margin-left: 0; }
+	}
+}

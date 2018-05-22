@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
   <title>Style Drives - Presented by Kia | Sharp Magazine</title>
+	<link rel='preconnect' href='//maps.google.com'>
   <meta name="description" content="Style Drives, Presented by Kia">
   <meta name="author" content="Colin Rabyniuk">
 	<!-- Set character encoding for the document -->
@@ -12,7 +12,8 @@
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-  <link rel="stylesheet" href="public/css/main.css">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,900" rel="stylesheet">
+  <link rel="stylesheet" href="public/css/main.min.css">
 
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -21,14 +22,17 @@
 
 <body>
   <div id="app">
+		<div id="loading">
+			<div class="lds-hourglass"></div>
+		</div>
     <city-guide
       :active="active"
 			:guide="guide"
     ></city-guide>
     <nav>
       <div class="nav__content">
-        <img src="public/imgs/sharp-logo-white.svg" alt="Sharp Magazine">
         <ul class="nav__list">
+					<li class="nav-list-item"><img src="public/imgs/sharp-logo-white.svg" alt="Sharp Magazine"></li>
           <nav-list-item
             v-for="city in cities"
             v-bind:key="city.id"
@@ -44,38 +48,79 @@
 					<div class="hero__content">
 		  			<header>
 		  				<h1>Style Drives</h1>
-							<h2>Presented by Kia</h2>
+							<h2>Kia & Sharp</h2>
 
 							<h3>Five cities. Five cultural and gastronomic adventures. One exceptional car — the all-new Kia Stinger. Zero excuses not to get out and explore this summer</h3>
+							<h3>Explore interactive maps of these cities:</h3>
+							<ul class="nav__list nav__list--header">
+								<nav-list-item
+									v-for="city in cities"
+									v-bind:key="city.id"
+									v-bind:city="city"
+									v-on:click.native="setActive"
+								></nav-list-item>
+							</ul>
 		  			</header>
 		  		</div>
-					<div class="hero__img"></div>
+					<div class="hero__img" data-img="public/imgs/kia-stinger-vertical-1.jpg" style="background-image: url('');">
+						<img src="public/imgs/hero-placeholder.jpg" class="hero__img__placeholder"/>
+					</div>
 				</div>
 	  	</div>
-	  	<div class="section" id="drake">
-	      <div class="hover-dot" id="moves" >
-	        <div class="tooltip" >
+			<div class="section" id="wellington">
+				<div class="hover-dot" id="smart">
+	        <div class="tooltip">
+						<span class="tooltip__close"><strong>X</strong></span>
+	          <strong>Smart Car</strong>
+	          <p>The UVO Intelligence sys- tem allows you to remotely start the Stinger, set climate controls, and keep track of maintenance management with your smartphone.</p>
+	        </div>
+	      </div>
+	      <div class="hover-dot" id="furious">
+	        <div class="tooltip">
+						<span class="tooltip__close"><strong>X</strong></span>
+	          <strong>Fast and Furious</strong>
+	          <p>The Stinger is far from shy under its hood. Its 3.3 litre twin turbocharged V6 engine produces an inspiring 365 horsepower and 376 lb.-ft. of torque.</p>
+	        </div>
+	      </div>
+			</div>
+	  	<div class="section"><div class="section__inset garrison"></div></div>
+	  	<div class="section" id="modern">
+				<div class="hover-dot" id="back">
+	        <div class="tooltip">
+						<span class="tooltip__close"><strong>X</strong></span>
+	          <strong>Smart Car</strong>
+	          <p>The fastback design makes the Stinger a true, old-school Gran Turismo — with the performance to back it up.</p>
+	        </div>
+	      </div>
+	      <div class="hover-dot" id="tested">
+	        <div class="tooltip">
+						<span class="tooltip__close"><strong>X</strong></span>
+	          <strong>Totally Tested</strong>
+	          <p>The Stinger was tested through 10,000km on the famed Nürburgring racetrack in Germany — the ultimate proving grounds for any perfor- mance car.</p>
+	        </div>
+	      </div>
+	  	</div>
+			<div class="section" id="drake">
+	      <div class="hover-dot" id="moves">
+	        <div class="tooltip">
 						<span class="tooltip__close"><strong>X</strong></span>
 	          <strong>Light Moves</strong>
 	          <p>The Stinger comes with adaptive headlights that respond to steering angle and road pitch</p>
 	        </div>
 	      </div>
 	      <div class="hover-dot" id="handles">
-	        <div class="tooltip" >
+	        <div class="tooltip">
 						<span class="tooltip__close"><strong>X</strong></span>
 	          <strong>It's Handled</strong>
 	          <p>Dynamic Torque Vectoring Control automatically applies power and braking force to the appropriate wheels for total stability and performance.</p>
 	        </div>
 	      </div>
 	    </div>
-	  	<div class="section"><div class="section__inset garrison"></div></div>
-	  	<div class="section"></div>
-	    <div class="section"></div>
 	    <div class="section"><div class="section__inset walking"></div></div>
 	    <div class="section"></div>
 			<div class="section section--nav">
-				<h2>Style Drives</h2>
-				<h3>Presented by Kia</h3>
+				<h1>Style Drives</h1>
+				<h3>Kia and Sharp</h3>
 				<ul class="nav__list nav__list--main">
 					<nav-list-item
 						v-for="city in cities"
@@ -88,28 +133,36 @@
 	  </div>
   </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="public/js/main.js"></script>
+	<script src="public/js/main.min.js"></script>
 
 	<script type="text/x-template" id="city-guide">
 		<div v-if="active" class="modal" :id="active" v-click-outside="onClickOutside">
 			<div id="map">
 				<gmap-map :center="guide.map.center" :zoom="13" style="width: 100%; height: 100%;">
+					<gmap-info-window
+						:options="infoOptions"
+						:position="infoWindowPos"
+						:opened="infoWinOpen"
+						@click="infoWinOpen=false">
+        			{{infoContent}}
+      		</gmap-info-window>
 					<GmapMarker
 				    :key="index"
 				    v-for="(m, index) in guide.map.markers"
 				    :position="m.position"
 				    :clickable="true"
 				    :draggable="false"
-						@click="toggleInfoWindow(m,i)"
+						@click="toggleInfoWindow(m,index)"
 				  />
 				</gmap-map>
+				<a :href="guide.map.url" target="_blank"><button class="map__cta">View in Google Maps</button></a>
 			</div>
 			<span @click="closeButton" class="close">X</span>
 			<div class="modal__content">
-				<h2>{{ guide.hed }}</h2>
-				<h3>{{ guide.dek }}</h3>
+				<!-- <h3></h3> -->
 				<div class="modal__content__copy">
-					<img src="" />
+					<h2>{{ guide.hed }}: </br> {{ guide.dek }}</h2>
+					<img v-bind:src="guide.imgSrc" />
 					<p v-html="guide.desc">{{ guide.desc }}</p>
 				</div>
 				<div class="modal__content__fade"></div>
@@ -118,9 +171,7 @@
 	</script>
 
 	<script type="text/x-template" id="nav-list-item">
-		<li class="nav-list-item"><a class="nav-list-item__link" href="#" >{{ city }}</a></li>
+		<li class="nav-list-item"><button class="nav-list-item__link" type="button">{{ city }}</button></li>
 	</script>
-
-
 </body>
 </html>

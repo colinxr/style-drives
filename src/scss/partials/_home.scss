@@ -2,22 +2,30 @@
 
 nav {
   background-color: black;
-  bottom: 0;
+  bottom: -80px;
   color: white;
   height: 80px;
   left: 0;
   right: 0;
 	position: fixed;
+	transition: bottom .45s ease-in;
 	z-index: 99;
 
-	@include tablet { position: absolute; }
+	// @include tablet { position: absolute; }
+
+	&.visible { bottom: 0; }
 
   .nav__content {
+		margin: 0 auto;
+		width: 90%;
     max-width: 1024px;
-    margin: 0 auto;
     text-align: center;
+		// transform: translateY(50%);
 
-  	* { display: inline; }
+		ul {
+			padding: 0;
+		img { transform: translateY(20%);}
+		}
   }
 }
 
@@ -31,6 +39,7 @@ nav {
 
 	li {
 		display: inline;
+		text-transform: capitalize;
 
 		& + li { margin-left: 25px; }
 	}
@@ -45,36 +54,76 @@ nav {
 		}
 	}
 
-	&--main {
-		li {
-			display: block;
-			font-size: 24pt;
-			line-height: 31pt;
-			font-weight: 600;
-			text-transform: capitalize;
+	button {
+		background-color: transparent;
+		border: 0;
+		color: white;
+		cursor: pointer;
+		text-transform: capitalize;
+		transition: color .15s;
 
-			& + li { margin-left: 0; }
-		}
+		&:hover { color: $orange; }
+		&:active { color: darken($orange, 15%); }
+		&:focus { outline: 0; }
 	}
+
+	button::-moz-focus-inner,
+	input::-moz-focus-inner {
+		border: 0;
+		padding: 0;
+	}
+
+	&--header {
+		@include nav-reset();
+
+		font-weight: 700px;
+		margin-top: 45px;
+
+		button { color: black; }
+	}
+
+	&--main { @include nav-reset(); }
 }
 
 .hero {
 	&__wrapper {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr 56%;
 		height: 100%;
 	}
 
 	&__content {
-		background-color: #4a4a4a;
+		background-color: white;
 		height: 100%;
+		padding-top: 15%;
+		position: relative;
+
+		header {
+			margin: 0 auto;
+			text-align: center;
+			width: 80%;
+		}
 	}
 
 	&__img {
+		background-color: $orange;
 		background-image: url('../imgs/kia-stinger-vertical-1.jpg');
 		background-position: center center;
 		background-size: cover;
 		height: 100%;
+		overflow: hidden;
+
+		&__placeholder {
+			filter: blur(40px);
+			height: 120vh;
+			opacity: .75;
+			margin-left: -75px;
+			transition: opacity .05s;
+			width: 130%;
+
+			&.loaded { opacity: 0; }
+		}
+
 	}
 }
 
@@ -89,7 +138,7 @@ nav {
 	}
 
   &:nth-of-type(2) {
-    background-image: url('../imgs/kia-stinger-drake-commissary.jpg');
+		background-image: url('../imgs/kia-stinger-bag.jpg');
     background-position: center center;
     background-size: cover;
   }
@@ -100,7 +149,7 @@ nav {
     background-size: cover;
   }
   &:nth-of-type(5) {
-    background-image: url('../imgs/kia-stinger-bag.jpg');
+    background-image: url('../imgs/kia-stinger-drake-commissary.jpg');
     background-position: center center;
     background-size: cover;
   }

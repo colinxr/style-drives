@@ -729,29 +729,98 @@ template {
       opacity: 0.75; }
 
 body {
-  font-family: 'Gotham', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  font-family: 'Gotham', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #4a4a4a; }
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 64pt; }
+
+h2 {
+  font-weight: 300; }
+
+#loading {
+  height: 100vh;
+  width: 100vw;
+  background-color: #F04B33;
+  padding: 30%;
+  position: absolute;
+  text-align: center;
+  z-index: 999; }
+  #loading .lds-hourglass {
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto; }
+  #loading .lds-hourglass:after {
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    margin: 6px;
+    box-sizing: border-box;
+    border: 26px solid #eaeaea;
+    border-color: #eaeaea transparent #eaeaea transparent;
+    -webkit-animation: lds-hourglass 1.2s infinite;
+            animation: lds-hourglass 1.2s infinite; }
+
+@-webkit-keyframes lds-hourglass {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  45% {
+    -webkit-transform: rotate(900deg);
+            transform: rotate(900deg);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  100% {
+    -webkit-transform: rotate(1800deg);
+            transform: rotate(1800deg); } }
+
+@keyframes lds-hourglass {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  45% {
+    -webkit-transform: rotate(900deg);
+            transform: rotate(900deg);
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  100% {
+    -webkit-transform: rotate(1800deg);
+            transform: rotate(1800deg); } }
 
 * {
   box-sizing: border-box; }
 
 nav {
   background-color: black;
-  bottom: 0;
+  bottom: -80px;
   color: white;
   height: 80px;
   left: 0;
   right: 0;
   position: fixed;
+  transition: bottom .45s ease-in;
   z-index: 99; }
-  @media (min-width: 768px) {
-    nav {
-      position: absolute; } }
+  nav.visible {
+    bottom: 0; }
   nav .nav__content {
-    max-width: 1024px;
     margin: 0 auto;
+    width: 90%;
+    max-width: 1024px;
     text-align: center; }
-    nav .nav__content * {
-      display: inline; }
+    nav .nav__content ul {
+      padding: 0; }
+      nav .nav__content ul img {
+        -webkit-transform: translateY(20%);
+                transform: translateY(20%); }
 
 .nav__list {
   display: none;
@@ -762,7 +831,8 @@ nav {
     .nav__list {
       display: inline-block; } }
   .nav__list li {
-    display: inline; }
+    display: inline;
+    text-transform: capitalize; }
     .nav__list li + li {
       margin-left: 25px; }
   .nav__list a {
@@ -771,29 +841,80 @@ nav {
     transition: color .15s; }
     .nav__list a:hover {
       color: #cccccc; }
-  .nav__list--main li {
-    display: block;
-    font-size: 24pt;
-    line-height: 31pt;
-    font-weight: 600;
-    text-transform: capitalize; }
-    .nav__list--main li + li {
-      margin-left: 0; }
+  .nav__list button {
+    background-color: transparent;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    text-transform: capitalize;
+    transition: color .15s; }
+    .nav__list button:hover {
+      color: #F04B33; }
+    .nav__list button:active {
+      color: #c8260f; }
+    .nav__list button:focus {
+      outline: 0; }
+  .nav__list button::-moz-focus-inner,
+  .nav__list input::-moz-focus-inner {
+    border: 0;
+    padding: 0; }
+  .nav__list--header {
+    padding-left: 0;
+    font-weight: 700px;
+    margin-top: 45px; }
+    .nav__list--header li {
+      display: block;
+      font-size: 24pt;
+      line-height: 31pt;
+      font-weight: 600;
+      text-transform: capitalize; }
+      .nav__list--header li + li {
+        margin-left: 0; }
+    .nav__list--header button {
+      color: black; }
+  .nav__list--main {
+    padding-left: 0; }
+    .nav__list--main li {
+      display: block;
+      font-size: 24pt;
+      line-height: 31pt;
+      font-weight: 600;
+      text-transform: capitalize; }
+      .nav__list--main li + li {
+        margin-left: 0; }
 
 .hero__wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 56%;
   height: 100%; }
 
 .hero__content {
-  background-color: #4a4a4a;
-  height: 100%; }
+  background-color: white;
+  height: 100%;
+  padding-top: 15%;
+  position: relative; }
+  .hero__content header {
+    margin: 0 auto;
+    text-align: center;
+    width: 80%; }
 
 .hero__img {
+  background-color: #F04B33;
   background-image: url("../imgs/kia-stinger-vertical-1.jpg");
   background-position: center center;
   background-size: cover;
-  height: 100%; }
+  height: 100%;
+  overflow: hidden; }
+  .hero__img__placeholder {
+    -webkit-filter: blur(40px);
+            filter: blur(40px);
+    height: 120vh;
+    opacity: .75;
+    margin-left: -75px;
+    transition: opacity .05s;
+    width: 130%; }
+    .hero__img__placeholder.loaded {
+      opacity: 0; }
 
 .section {
   background-color: #fafafa;
@@ -806,7 +927,7 @@ nav {
     .section {
       height: calc(100vh - 110px); } }
   .section:nth-of-type(2) {
-    background-image: url("../imgs/kia-stinger-drake-commissary.jpg");
+    background-image: url("../imgs/kia-stinger-bag.jpg");
     background-position: center center;
     background-size: cover; }
   .section:nth-of-type(4) {
@@ -814,7 +935,7 @@ nav {
     background-position: center center;
     background-size: cover; }
   .section:nth-of-type(5) {
-    background-image: url("../imgs/kia-stinger-bag.jpg");
+    background-image: url("../imgs/kia-stinger-drake-commissary.jpg");
     background-position: center center;
     background-size: cover; }
   .section:nth-of-type(7) {
@@ -927,6 +1048,37 @@ nav {
 [data-parent="handles"] {
   bottom: 15%;
   right: 10%; }
+
+[data-parent="smart"] {
+  top: 35%;
+  left: 12%; }
+
+[data-parent="furious"] {
+  bottom: 15%;
+  right: 10%; }
+
+[data-parent="back"] {
+  top: 35%;
+  left: 12%; }
+
+[data-parent="tested"] {
+  bottom: 15%;
+  right: 10%; }
+
+#smart {
+  top: 35%;
+  left: 13%; }
+
+#furious {
+  top: 45%;
+  right: 13%; }
+
+#back {
+  left: 14%; }
+
+#tested {
+  top: 34%;
+  right: 5%; }
 
 #moves {
   bottom: 46%;
@@ -1052,8 +1204,9 @@ nav {
 .modal {
   background-color: white;
   border: 5px solid #F04B33;
-  height: 90%;
-  position: absolute;
+  box-shadow: 1px -1px 200px 35px rgba(0, 0, 0, 0.75);
+  height: 85%;
+  position: fixed;
   left: 5%;
   top: 2%;
   width: 90%;
@@ -1071,20 +1224,26 @@ nav {
       .modal__content {
         border: 5px solid #F04B33;
         min-width: 333px;
-        max-width: 400px;
-        height: 75%;
-        width: 30%; } }
+        max-width: 450px;
+        height: 100%;
+        width: 33%; } }
+    .modal__content h2,
+    .modal__content h3 {
+      color: #F04B33;
+      font-weight: 400; }
     .modal__content img {
       background-color: gray;
       height: auto;
       min-height: 25%;
       width: 100%; }
     .modal__content__copy {
-      height: 90%;
+      height: 100%;
       overflow: scroll;
-      padding-bottom: 100px;
+      padding-bottom: 45px;
       -ms-overflow-style: none;
       overflow: -moz-scrollbars-none; }
+      .modal__content__copy p {
+        line-height: 18pt; }
       .modal__content__copy::-webkit-scrollbar {
         display: none; }
     .modal__content__fade {
@@ -1107,20 +1266,52 @@ nav {
     height: 225px; }
     @media (min-width: 768px) {
       .modal #map {
-        background-color: pink;
         height: 100%;
         position: absolute;
         width: 100%;
         z-index: -1; } }
+    .modal #map .map__cta {
+      background-color: #4a85fa;
+      border-radius: 15px;
+      bottom: 25px;
+      color: white;
+      cursor: pointer;
+      left: 57%;
+      padding: 15px;
+      position: absolute;
+      right: 43%;
+      transition: background-color .15s;
+      width: 200px; }
+      .modal #map .map__cta:hover {
+        background-color: #1864f9; }
+      .modal #map .map__cta:active {
+        background-color: #064cd8; }
+      .modal #map .map__cta:focus {
+        outline: 0; }
   .modal .close {
+    color: #F04B33;
+    cursor: pointer;
     position: absolute;
+    font-weight: bold;
+    font-size: 28pt;
     right: 15px;
     top: 15px;
-    font-weight: bold;
-    cursor: pointer; }
+    transition: color .15s; }
+    .modal .close:hover {
+      color: #b0220d; }
 
 .stop-scroll {
   height: 100% !important;
   overflow: hidden !important; }
+
+.modal-open:after {
+  position: absolute;
+  background-color: black;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; }
 
 /*# sourceMappingURL=main.css.map */

@@ -81,6 +81,47 @@
 	right: 10%;
 }
 
+[data-parent="smart"] {
+	top: 35%;
+	left: 12%;
+}
+
+[data-parent="furious"] {
+	bottom: 15%;
+	right: 10%;
+}
+
+[data-parent="back"] {
+	top: 35%;
+	left: 12%;
+}
+
+[data-parent="tested"] {
+	bottom: 15%;
+	right: 10%;
+}
+
+#smart {
+	top: 35%;
+  left: 13%;
+}
+
+#furious {
+	top: 45%;
+  right: 13%;
+}
+
+#back {
+	left: 14%;
+}
+
+#tested {
+	top: 34%;
+	right: 5%;
+
+}
+
+
 #moves {
   bottom: 46%;
   left: 13%;
