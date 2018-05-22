@@ -8,7 +8,7 @@ nav {
   left: 0;
   right: 0;
 	position: fixed;
-	transition: bottom .45s ease-in;
+	transition: bottom .175s ease-in-out;
 	z-index: 99;
 
 	// @include tablet { position: absolute; }
@@ -20,11 +20,11 @@ nav {
 		width: 90%;
     max-width: 1024px;
     text-align: center;
-		// transform: translateY(50%);
 
 		ul {
 			padding: 0;
-		img { transform: translateY(20%);}
+
+			img { transform: translateY(20%);}
 		}
   }
 }
@@ -59,11 +59,10 @@ nav {
 		border: 0;
 		color: white;
 		cursor: pointer;
+		margin-bottom: 14px;
 		text-transform: capitalize;
-		transition: color .15s;
+		transition: all .15s;
 
-		&:hover { color: $orange; }
-		&:active { color: darken($orange, 15%); }
 		&:focus { outline: 0; }
 	}
 
@@ -75,14 +74,28 @@ nav {
 
 	&--header {
 		@include nav-reset();
+		margin-top: 0;
 
-		font-weight: 700px;
-		margin-top: 45px;
+		button {
+			color: #4a4a4a;
+			font-family: 'Playfair Display';
+			font-size: 24pt;
+			padding: 5px;
+			transition: all .15s;
 
-		button { color: black; }
+			@include underline(#eea849, $orange);
+
+			&:hover { color: darken(#4a4a4a, 20%); }
+			// &:active { color: #4a4a4a; }
+		}
 	}
 
-	&--main { @include nav-reset(); }
+	&--main {
+		@include nav-reset();
+		button {
+			@include underline(#434343, #000000);
+		}
+	}
 }
 
 .hero {
@@ -95,7 +108,7 @@ nav {
 	&__content {
 		background-color: white;
 		height: 100%;
-		padding-top: 15%;
+		padding-top: 5%;
 		position: relative;
 
 		header {

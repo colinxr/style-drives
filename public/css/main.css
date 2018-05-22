@@ -734,10 +734,17 @@ body {
 
 h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 64pt; }
+  font-size: 56pt;
+  margin: 0.25em 0; }
 
 h2 {
+  font-weight: 300;
+  margin: 0; }
+
+h3 {
   font-weight: 300; }
+  h3 + h3 {
+    margin-top: 35px; }
 
 #loading {
   height: 100vh;
@@ -807,7 +814,7 @@ nav {
   left: 0;
   right: 0;
   position: fixed;
-  transition: bottom .45s ease-in;
+  transition: bottom .175s ease-in-out;
   z-index: 99; }
   nav.visible {
     bottom: 0; }
@@ -846,12 +853,9 @@ nav {
     border: 0;
     color: white;
     cursor: pointer;
+    margin-bottom: 14px;
     text-transform: capitalize;
-    transition: color .15s; }
-    .nav__list button:hover {
-      color: #F04B33; }
-    .nav__list button:active {
-      color: #c8260f; }
+    transition: all .15s; }
     .nav__list button:focus {
       outline: 0; }
   .nav__list button::-moz-focus-inner,
@@ -860,8 +864,7 @@ nav {
     padding: 0; }
   .nav__list--header {
     padding-left: 0;
-    font-weight: 700px;
-    margin-top: 45px; }
+    margin-top: 0; }
     .nav__list--header li {
       display: block;
       font-size: 24pt;
@@ -871,7 +874,25 @@ nav {
       .nav__list--header li + li {
         margin-left: 0; }
     .nav__list--header button {
-      color: black; }
+      color: #4a4a4a;
+      font-family: 'Playfair Display';
+      font-size: 24pt;
+      padding: 5px;
+      transition: all .15s;
+      font-family: 'Playfair Display';
+      padding: 10px;
+      background-image: linear-gradient(120deg, #eea849 0%, #F04B33 100%);
+      background-repeat: no-repeat;
+      background-size: 100% 0.15em;
+      background-position: 0 88%;
+      transition: background-size 0.15s ease-out; }
+      .nav__list--header button:hover {
+        background-size: 100% 88%; }
+      .nav__list--header button:active {
+        background-image: linear-gradient(120deg, #F04B33 0%, #eea849 100%);
+        background-size: 100% 88%; }
+      .nav__list--header button:hover {
+        color: #171717; }
   .nav__list--main {
     padding-left: 0; }
     .nav__list--main li {
@@ -882,6 +903,19 @@ nav {
       text-transform: capitalize; }
       .nav__list--main li + li {
         margin-left: 0; }
+    .nav__list--main button {
+      font-family: 'Playfair Display';
+      padding: 10px;
+      background-image: linear-gradient(120deg, #434343 0%, #000000 100%);
+      background-repeat: no-repeat;
+      background-size: 100% 0.15em;
+      background-position: 0 88%;
+      transition: background-size 0.15s ease-out; }
+      .nav__list--main button:hover {
+        background-size: 100% 88%; }
+      .nav__list--main button:active {
+        background-image: linear-gradient(120deg, #000000 0%, #434343 100%);
+        background-size: 100% 88%; }
 
 .hero__wrapper {
   display: grid;
@@ -891,7 +925,7 @@ nav {
 .hero__content {
   background-color: white;
   height: 100%;
-  padding-top: 15%;
+  padding-top: 5%;
   position: relative; }
   .hero__content header {
     margin: 0 auto;

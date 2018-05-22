@@ -46,7 +46,14 @@
 			overflow: scroll;
 			padding-bottom: 45px;
 
-			p { line-height: 18pt; }
+			p {
+				line-height: 18pt;
+
+				&:first-child{
+					&:first-letter {
+					}
+				}
+			}
 
 			-ms-overflow-style: none;  // IE 10+
 	 		overflow: -moz-scrollbars-none;  // Firefox
