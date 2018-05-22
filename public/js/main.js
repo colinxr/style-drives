@@ -17189,14 +17189,16 @@ function mappedPropsToVueProps(mappedProps) {
 "use strict";
 
 
+var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-  return typeof obj;
+var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
 } : function (obj) {
-  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
 };
 
 /* vim: set softtabstop=2 shiftwidth=2 expandtab : */
@@ -17286,14 +17288,16 @@ var load = exports.load = function (options, loadCn) {
 "use strict";
 
 
+var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-  return typeof obj;
+var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
 } : function (obj) {
-  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
 };
 
 exports.getPropsValues = getPropsValues;
@@ -17328,7 +17332,7 @@ function getPropsValues(vueInst, props) {
   * emitted if the data source was external.
   */
 function bindProps(vueInst, googleMapsInst, props) {
-  var _loop = function (attribute) {
+  var _loop = function _loop(attribute) {
     var _props$attribute = props[attribute],
         twoWay = _props$attribute.twoWay,
         type = _props$attribute.type,
@@ -17505,7 +17509,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (vueInst, googleMapsInst, events) {
-  var _loop = function (eventName) {
+  var _loop = function _loop(eventName) {
     if (vueInst.$gmapOptions.autobindAllEvents || vueInst.$listeners[eventName]) {
       googleMapsInst.addListener(eventName, function (ev) {
         vueInst.$emit(eventName, ev);
@@ -17735,7 +17739,10 @@ exports.default = {
 
 /***/ }),
 /* 9 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
@@ -18280,7 +18287,7 @@ exports.default = function (input) {
     // and then trigger the original listener.
     if (type === 'keydown') {
       var origListener = listener;
-      listener = function (event) {
+      listener = function listener(event) {
         var suggestionSelected = document.getElementsByClassName('pac-item-selected').length > 0;
         if (event.which === 13 && !suggestionSelected) {
           var simulatedEvent = document.createEvent('Event');
@@ -18317,23 +18324,37 @@ exports.default = function (input) {
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var cityData = __webpack_require__(18);
-var VueGoogleMaps = __webpack_require__(19);
-var vClickOutside = __webpack_require__(44);
+"use strict";
+
+
+var _cityData = __webpack_require__(18);
+
+var _cityData2 = _interopRequireDefault(_cityData);
+
+var _vue2GoogleMaps = __webpack_require__(19);
+
+var VueGoogleMaps = _interopRequireWildcard(_vue2GoogleMaps);
+
+var _vClickOutside = __webpack_require__(44);
+
+var _vClickOutside2 = _interopRequireDefault(_vClickOutside);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 Vue.use(VueGoogleMaps, {
 	load: {
 		key: 'AIzaSyDj58pJufBNZWLoxIo9EVBpt1MHi1Y3GdA',
 		libraries: 'places'
 	}
-	// installComponents: false,
 });
 
-Vue.use(vClickOutside);
+Vue.use(_vClickOutside2.default);
 
 $(document).ready(function () {
 	Vue.component('city-guide', {
-		data: function () {
+		data: function data() {
 			return {
 				center: {},
 				infoContent: '',
@@ -18355,20 +18376,20 @@ $(document).ready(function () {
 			guide: Object
 		},
 		template: '#city-guide',
-		mounted: function () {},
-		updated: function () {},
+		mounted: function mounted() {},
+		updated: function updated() {},
 		methods: {
-			closeButton: function () {
+			closeButton: function closeButton() {
 				this.$parent.clearActive();
 			},
 
-			onClickOutside: function (e) {
+			onClickOutside: function onClickOutside(e) {
 				if (!e.target.classList.contains('nav-list-item__link')) {
 					this.$parent.clearActive();
 				}
 			},
 
-			toggleInfoWindow: function (marker, idx) {
+			toggleInfoWindow: function toggleInfoWindow(marker, idx) {
 				this.infoWindowPos = marker.position;
 				this.infoContent = marker.infoText;
 
@@ -18395,18 +18416,18 @@ $(document).ready(function () {
 	var vm = new Vue({
 		el: '#app',
 		data: {
-			cityData: cityData,
+			cityData: _cityData2.default,
 			cities: [],
 			active: '',
 			guide: {},
 			visible: false
 		},
 		methods: {
-			extractCities: function (cityData) {
+			extractCities: function extractCities(cityData) {
 				this.cities = Object.keys(cityData);
 			},
 
-			setActive: function (e) {
+			setActive: function setActive(e) {
 				this.active = e.target.textContent;
 				this.visible = true;
 				this.guide = this.cityData[this.active];
@@ -18415,24 +18436,30 @@ $(document).ready(function () {
 				document.body.classList.add('stop-scroll');
 			},
 
-			clearActive: function () {
+			clearActive: function clearActive() {
 				this.active = '', this.visible = false;
 				this.guide = {};
 				document.body.classList.remove('stop-scroll');
 				$.fn.fullpage.setAutoScrolling(true);
 			}
 		},
-		mounted: function () {
-			this.extractCities(cityData);
+		mounted: function mounted() {
+			this.extractCities(_cityData2.default);
 		}
 	});
 });
 
 /***/ }),
 /* 18 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = {
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var cityData = {
 	toronto: {
 		id: 1,
 		hed: 'Toronto',
@@ -18653,6 +18680,8 @@ module.exports = {
 		imgSrc: 'http://www.contempomedia.com/kia-stinger/public/imgs/calgary.jpg'
 	}
 };
+
+exports.default = cityData;
 
 /***/ }),
 /* 19 */
@@ -19037,7 +19066,7 @@ exports.default = (0, _mapElementFactory2.default)({
   afterCreate: function afterCreate() {
     var _this = this;
 
-    var clearEvents = function () {};
+    var clearEvents = function clearEvents() {};
 
     this.$watch('path', function (path) {
       if (path) {
@@ -19048,7 +19077,7 @@ exports.default = (0, _mapElementFactory2.default)({
         var mvcPath = _this.$polylineObject.getPath();
         var eventListeners = [];
 
-        var updatePaths = function () {
+        var updatePaths = function updatePaths() {
           _this.$emit('path_changed', _this.$polylineObject.getPath());
         };
 
@@ -19056,7 +19085,7 @@ exports.default = (0, _mapElementFactory2.default)({
         eventListeners.push([mvcPath, mvcPath.addListener('remove_at', updatePaths)]);
         eventListeners.push([mvcPath, mvcPath.addListener('set_at', updatePaths)]);
 
-        clearEvents = function () {
+        clearEvents = function clearEvents() {
           eventListeners.map(function (_ref) {
             var _ref2 = _slicedToArray(_ref, 2),
                 obj = _ref2[0],
@@ -19164,7 +19193,7 @@ exports.default = (0, _mapElementFactory2.default)({
   afterCreate: function afterCreate(inst) {
     var _this = this;
 
-    var clearEvents = function () {};
+    var clearEvents = function clearEvents() {};
 
     // Watch paths, on our own, because we do not want to set either when it is
     // empty
@@ -19174,7 +19203,7 @@ exports.default = (0, _mapElementFactory2.default)({
 
         inst.setPaths(paths);
 
-        var updatePaths = function () {
+        var updatePaths = function updatePaths() {
           _this.$emit('paths_changed', inst.getPaths());
         };
         var eventListeners = [];
@@ -19190,7 +19219,7 @@ exports.default = (0, _mapElementFactory2.default)({
         eventListeners.push([mvcArray, mvcArray.addListener('remove_at', updatePaths)]);
         eventListeners.push([mvcArray, mvcArray.addListener('set_at', updatePaths)]);
 
-        clearEvents = function () {
+        clearEvents = function clearEvents() {
           eventListeners.map(function (_ref) {
             var _ref2 = _slicedToArray(_ref, 2),
                 obj = _ref2[0],
@@ -19216,7 +19245,7 @@ exports.default = (0, _mapElementFactory2.default)({
         var mvcPath = inst.getPath();
         var eventListeners = [];
 
-        var updatePaths = function () {
+        var updatePaths = function updatePaths() {
           _this.$emit('path_changed', inst.getPath());
         };
 
@@ -19224,7 +19253,7 @@ exports.default = (0, _mapElementFactory2.default)({
         eventListeners.push([mvcPath, mvcPath.addListener('remove_at', updatePaths)]);
         eventListeners.push([mvcPath, mvcPath.addListener('set_at', updatePaths)]);
 
-        clearEvents = function () {
+        clearEvents = function clearEvents() {
           eventListeners.map(function (_ref3) {
             var _ref4 = _slicedToArray(_ref3, 2),
                 obj = _ref4[0],

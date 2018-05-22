@@ -1,4 +1,4 @@
-module.exports = {
+const cityData = {
 	toronto: {
 		id: 1,
 		hed: 'Toronto',
@@ -219,3 +219,5 @@ module.exports = {
 		imgSrc: 'http://www.contempomedia.com/kia-stinger/public/imgs/calgary.jpg',
 	},
 };
+
+export default cityData;

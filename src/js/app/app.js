@@ -1,13 +1,12 @@
-var cityData = require('./cityData.js');
-var VueGoogleMaps = require('vue2-google-maps');
-var vClickOutside = require('v-click-outside');
+import cityData from './cityData.js';
+import * as VueGoogleMaps from 'vue2-google-maps'
+import vClickOutside from 'v-click-outside';
 
 Vue.use(VueGoogleMaps, {
 	load: {
 		key: 'AIzaSyDj58pJufBNZWLoxIo9EVBpt1MHi1Y3GdA',
 		libraries: 'places',
 	},
-	// installComponents: false,
 });
 
 Vue.use(vClickOutside);
