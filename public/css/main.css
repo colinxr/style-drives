@@ -734,17 +734,25 @@ body {
 
 h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 56pt;
+  font-size: 24pt;
   margin: 0.25em 0; }
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 36pt; } }
+  .smaller h1 {
+    font-size: 28pt; }
 
 h2 {
+  font-size: 14pt;
   font-weight: 300;
   margin: 0; }
+  .smaller h2 {
+    font-size: 12pt; }
 
 h3 {
+  font-size: 12pt;
+  line-height: 18pt;
   font-weight: 300; }
-  h3 + h3 {
-    margin-top: 35px; }
 
 #loading {
   height: 100vh;
@@ -808,35 +816,40 @@ h3 {
 
 nav {
   background-color: black;
-  bottom: -80px;
+  bottom: -40px;
   color: white;
-  height: 80px;
+  height: 40px;
   left: 0;
   right: 0;
   position: fixed;
   transition: bottom .175s ease-in-out;
   z-index: 99; }
+  @media (min-width: 768px) {
+    nav {
+      bottom: -60px;
+      height: 60px; } }
   nav.visible {
     bottom: 0; }
   nav .nav__content {
+    display: none;
     margin: 0 auto;
     width: 90%;
     max-width: 1024px;
     text-align: center; }
+    @media (min-width: 768px) {
+      nav .nav__content {
+        display: block; } }
     nav .nav__content ul {
+      margin-top: 5px;
       padding: 0; }
       nav .nav__content ul img {
         -webkit-transform: translateY(20%);
                 transform: translateY(20%); }
 
 .nav__list {
-  display: none;
   list-style-type: none;
   margin-left: 0;
   text-transform: capitalize; }
-  @media (min-width: 768px) {
-    .nav__list {
-      display: inline-block; } }
   .nav__list li {
     display: inline;
     text-transform: capitalize; }
@@ -863,20 +876,24 @@ nav {
     border: 0;
     padding: 0; }
   .nav__list--header {
-    padding-left: 0;
-    margin-top: 0; }
+    display: block;
+    margin-top: 0;
+    padding-left: 0; }
     .nav__list--header li {
       display: block;
-      font-size: 24pt;
-      line-height: 31pt;
       font-weight: 600;
       text-transform: capitalize; }
       .nav__list--header li + li {
         margin-left: 0; }
+    .smaller .nav__list--header li {
+      display: inline; }
+      .smaller .nav__list--header li + li {
+        margin-left: 15px; }
     .nav__list--header button {
       color: #4a4a4a;
       font-family: 'Playfair Display';
-      font-size: 24pt;
+      font-size: 16pt;
+      margin-bottom: 8px;
       padding: 5px;
       transition: all .15s;
       font-family: 'Playfair Display';
@@ -891,19 +908,23 @@ nav {
       .nav__list--header button:active {
         background-image: linear-gradient(120deg, #F04B33 0%, #eea849 100%);
         background-size: 100% 88%; }
+      @media (min-width: 768px) {
+        .nav__list--header button {
+          font-size: 16pt; } }
       .nav__list--header button:hover {
         color: #171717; }
   .nav__list--main {
+    display: block;
+    margin: 0 auto;
     padding-left: 0; }
     .nav__list--main li {
       display: block;
-      font-size: 24pt;
-      line-height: 31pt;
       font-weight: 600;
       text-transform: capitalize; }
       .nav__list--main li + li {
         margin-left: 0; }
     .nav__list--main button {
+      font-size: 16pt;
       font-family: 'Playfair Display';
       padding: 10px;
       background-image: linear-gradient(120deg, #434343 0%, #000000 100%);
@@ -918,27 +939,41 @@ nav {
         background-size: 100% 88%; }
 
 .hero__wrapper {
-  display: grid;
-  grid-template-columns: 1fr 56%;
-  height: 100%; }
+  display: block; }
+  @media (min-width: 768px) {
+    .hero__wrapper {
+      display: grid;
+      grid-template-columns: 1fr 56%;
+      height: 100%; } }
 
 .hero__content {
-  background-color: white;
-  height: 100%;
-  padding-top: 5%;
-  position: relative; }
+  display: block;
+  text-align: center;
+  padding-top: 10%;
+  height: 100%; }
+  @media (min-width: 768px) {
+    .hero__content {
+      padding: 12% 25px 0 25px;
+      height: 100%;
+      max-height: 700px;
+      position: relative; } }
   .hero__content header {
-    margin: 0 auto;
-    text-align: center;
-    width: 80%; }
+    margin: 0 auto 25px;
+    width: 90%; }
 
 .hero__img {
   background-color: #F04B33;
   background-image: url("../imgs/kia-stinger-vertical-1.jpg");
-  background-position: center center;
+  background-position: center 35%;
   background-size: cover;
-  height: 100%;
-  overflow: hidden; }
+  display: block;
+  padding-top: 100%;
+  height: 100%; }
+  @media (min-width: 768px) {
+    .hero__img {
+      height: 100%;
+      padding-top: 0;
+      overflow: hidden; } }
   .hero__img__placeholder {
     -webkit-filter: blur(40px);
             filter: blur(40px);
@@ -952,13 +987,18 @@ nav {
 
 .section {
   background-color: #fafafa;
-  -webkit-filter: grayscale(100%);
-          filter: grayscale(100%);
-  height: auto;
+  display: block;
+  height: 100vh;
+  position: relative;
   transition: -webkit-filter .85s, filter .85s;
   width: 100vw; }
+  .section .fp-section {
+    -webkit-filter: grayscale(100%);
+            filter: grayscale(100%); }
   @media (min-width: 768px) {
-    .section {
+    .section .fp-section {
+      -webkit-filter: grayscale(100%);
+              filter: grayscale(100%);
       height: calc(100vh - 110px); } }
   .section:nth-of-type(2) {
     background-image: url("../imgs/kia-stinger-bag.jpg");
@@ -983,11 +1023,16 @@ nav {
     background-position: center center;
     background-size: cover;
     border: 1px solid #6a6c6b;
-    height: calc(90% - 110px);
+    height: 90%;
     margin: 0 auto;
-    width: 90%;
-    -webkit-transform: translateY(-6%);
-            transform: translateY(-6%); }
+    -webkit-transform: translateY(5%);
+            transform: translateY(5%);
+    width: 90%; }
+    @media (min-width: 768px) {
+      .fp-section .section__inset {
+        height: calc(100vh - 110px);
+        -webkit-transform: translateY(-5%);
+                transform: translateY(-5%); } }
     .section__inset.garrison {
       background-image: url("../imgs/kia-stinger-garrison-bespoke.jpg"); }
     .section__inset.walking {

@@ -12,3 +12,9 @@ $desktop-width: 1024px;
     @content;
   }
 }
+
+@mixin breakpoint($px) {
+	@media (max-width: #{$px}) {
+		@content;
+	}
+}

@@ -2,26 +2,33 @@
 
 nav {
   background-color: black;
-  bottom: -80px;
+  bottom: -40px;
   color: white;
-  height: 80px;
+  height: 40px;
   left: 0;
   right: 0;
 	position: fixed;
 	transition: bottom .175s ease-in-out;
 	z-index: 99;
 
-	// @include tablet { position: absolute; }
+	@include tablet {
+		bottom: -60px;
+		height: 60px;
+	}
 
 	&.visible { bottom: 0; }
 
   .nav__content {
+		display: none;
 		margin: 0 auto;
 		width: 90%;
     max-width: 1024px;
     text-align: center;
 
+		@include tablet { display: block; }
+
 		ul {
+			margin-top: 5px;
 			padding: 0;
 
 			img { transform: translateY(20%);}
@@ -30,12 +37,9 @@ nav {
 }
 
 .nav__list {
-	display: none;
 	list-style-type: none;
 	margin-left: 0;
 	text-transform: capitalize;
-
-	@include tablet { display: inline-block; }
 
 	li {
 		display: inline;
@@ -73,17 +77,30 @@ nav {
 	}
 
 	&--header {
-		@include nav-reset();
+		display: block;
 		margin-top: 0;
+		@include nav-reset();
+
+		.smaller & {
+			li {
+				display: inline;
+
+				+ li { margin-left: 15px; }
+			}
+		}
 
 		button {
 			color: #4a4a4a;
 			font-family: 'Playfair Display';
-			font-size: 24pt;
+			font-size: 16pt;
+			margin-bottom: 8px;
 			padding: 5px;
 			transition: all .15s;
-
 			@include underline(#eea849, $orange);
+
+			@include tablet {
+				font-size: 16pt;
+			}
 
 			&:hover { color: darken(#4a4a4a, 20%); }
 			// &:active { color: #4a4a4a; }
@@ -91,40 +108,62 @@ nav {
 	}
 
 	&--main {
+		display: block;
+		margin: 0 auto;
 		@include nav-reset();
 		button {
+			font-size: 16pt;
 			@include underline(#434343, #000000);
 		}
 	}
 }
 
 .hero {
+
 	&__wrapper {
-		display: grid;
-		grid-template-columns: 1fr 56%;
-		height: 100%;
+		display: block;
+
+		@include tablet {
+			display: grid;
+			grid-template-columns: 1fr 56%;
+			height: 100%;
+		}
 	}
 
 	&__content {
-		background-color: white;
+		display: block;
+		text-align: center;
+		padding-top: 10%;
 		height: 100%;
-		padding-top: 5%;
-		position: relative;
+		// max-height: 700px;
+
+		@include tablet {
+			padding: 12% 25px 0 25px;
+			height: 100%;
+			max-height: 700px;
+			position: relative;
+		}
 
 		header {
-			margin: 0 auto;
-			text-align: center;
-			width: 80%;
+			margin: 0 auto 25px;
+			width: 90%;
 		}
 	}
 
 	&__img {
 		background-color: $orange;
 		background-image: url('../imgs/kia-stinger-vertical-1.jpg');
-		background-position: center center;
+		background-position: center 35%;
 		background-size: cover;
+		display: block;
+		padding-top: 100%;
 		height: 100%;
-		overflow: hidden;
+
+		@include tablet {
+			height: 100%;
+			padding-top: 0;
+			overflow: hidden;
+		}
 
 		&__placeholder {
 			filter: blur(40px);
@@ -136,19 +175,26 @@ nav {
 
 			&.loaded { opacity: 0; }
 		}
-
 	}
 }
 
 .section {
 	background-color: #fafafa;
-	filter: grayscale(100%);
-	height: auto;
+	display: block;
+	height: 100vh;
+	position: relative;
 	transition: filter .85s;
 	width: 100vw;
 
-	@include tablet { height: calc(100vh - 110px);
+	& .fp-section {
+		filter: grayscale(100%);
 	}
+
+	@include tablet {
+		& .fp-section {
+			filter: grayscale(100%);
+			height: calc(100vh - 110px); }
+		}
 
   &:nth-of-type(2) {
 		background-image: url('../imgs/kia-stinger-bag.jpg');
@@ -180,10 +226,17 @@ nav {
     background-position: center center;
     background-size: cover;
     border: 1px solid #6a6c6b;
-    height: calc(90% - 110px);
+		height: 90%;
     margin: 0 auto;
+		transform: translateY(5%);
     width: 90%;
-    transform: translateY(-6%);
+
+		@include tablet {
+			.fp-section & {
+				height: calc(100vh - 110px);
+				transform: translateY(-5%);
+			}
+		}
 
     &.garrison {
       background-image: url('../imgs/kia-stinger-garrison-bespoke.jpg');

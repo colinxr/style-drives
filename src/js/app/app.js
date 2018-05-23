@@ -35,19 +35,24 @@ $(document).ready(function() {
 			guide: Object,
 		},
 		template: '#city-guide',
-		mounted: function () {
-		},
-		updated: function() {
-		},
 		methods: {
 			closeButton: function() {
+				this.clearInfoWindow();
 				this.$parent.clearActive();
 			},
 
 			onClickOutside: function(e) {
 				if (!e.target.classList.contains('nav-list-item__link')) {
+					this.clearInfoWindow();
 					this.$parent.clearActive();
 				}
+			},
+
+			clearInfoWindow: function() {
+				this.infoContent = '';
+        this.infoWindowPos = null;
+        this.infoWinOpen =  false;
+        this.currentMidx = null;
 			},
 
 			toggleInfoWindow: function(marker, idx) {

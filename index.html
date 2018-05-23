@@ -51,16 +51,16 @@
 		  				<h1>Style Drives</h1>
 
 							<h3>Five cities. Five cultural and gastronomic adventures. One exceptional car — the all-new Kia Stinger. Zero excuses not to get out and explore this summer</h3>
-							<h3>Explore interactive maps of these cities:</h3>
-							<ul class="nav__list nav__list--header">
-								<nav-list-item
-									v-for="city in cities"
-									v-bind:key="city.id"
-									v-bind:city="city"
-									v-on:click.native="setActive"
-								></nav-list-item>
-							</ul>
-		  			</header>
+						</header>
+						<h3>Explore interactive maps of these cities:</h3>
+						<ul class="nav__list nav__list--header">
+							<nav-list-item
+								v-for="city in cities"
+								v-bind:key="city.id"
+								v-bind:city="city"
+								v-on:click.native="setActive"
+							></nav-list-item>
+						</ul>
 		  		</div>
 					<div class="hero__img" data-img="public/imgs/kia-stinger-vertical-1.jpg" style="background-image: url('');">
 						<img src="public/imgs/hero-placeholder.jpg" class="hero__img__placeholder"/>
@@ -133,7 +133,7 @@
 	  </div>
   </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="public/js/main.min.js"></script>
+	<script src="public/js/main.js"></script>
 
 	<script type="text/x-template" id="city-guide">
 		<div v-if="active" class="modal" :id="active" v-click-outside="onClickOutside">

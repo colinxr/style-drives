@@ -1492,17 +1492,24 @@ $(document).ready(function () {
 			guide: Object
 		},
 		template: '#city-guide',
-		mounted: function mounted() {},
-		updated: function updated() {},
 		methods: {
 			closeButton: function closeButton() {
+				this.clearInfoWindow();
 				this.$parent.clearActive();
 			},
 
 			onClickOutside: function onClickOutside(e) {
 				if (!e.target.classList.contains('nav-list-item__link')) {
+					this.clearInfoWindow();
 					this.$parent.clearActive();
 				}
+			},
+
+			clearInfoWindow: function clearInfoWindow() {
+				this.infoContent = '';
+				this.infoWindowPos = null;
+				this.infoWinOpen = false;
+				this.currentMidx = null;
 			},
 
 			toggleInfoWindow: function toggleInfoWindow(marker, idx) {

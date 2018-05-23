@@ -11,10 +11,12 @@
 
 	li {
 		display: block;
-		font-size: 24pt;
-		line-height: 31pt;
 		font-weight: 600;
 		text-transform: capitalize;
+
+		@include tablet {
+			// line-height: 31pt;
+		}
 
 		& + li { margin-left: 0; }
 	}

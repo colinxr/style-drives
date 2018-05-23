@@ -1,8 +1,8 @@
 {
-  "name": "Eighteen",
+  "name": "kia-stinger",
   "version": "1.0.0",
   "private": true,
-  "description": "Contempo Media wordpress theme, 2018",
+  "description": "Special Execution for Sharp Magazine and Kia",
   "author": "Colin Rabyniuk",
   "license": "ISC",
   "devDependencies": {
