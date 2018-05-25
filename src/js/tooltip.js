@@ -1,10 +1,10 @@
 $(document).ready(function() {
-	var hoverDot = $('.hover-dot');
-	var closeBtn = $('.tooltip__close');
+	var section =('.section');
+	var hoverDot = '.hover-dot';
+	var closeBtn = '.tooltip__close';
 
-	hoverDot.on('click', function() {
+	$(section).on('click', hoverDot, function() {
 		var id = $(this).attr('id');
-		console.log(id);
 		$(this).children('.tooltip')
 			.attr('data-parent', id)
 			.appendTo($(this).parent())
@@ -13,7 +13,7 @@ $(document).ready(function() {
 		$(this).addClass('paused');
 	});
 
-	closeBtn.on('click', function() {
+	$(section).on('click', closeBtn, function() {
 		var parentDot = '#'+ $(this).parent('.tooltip').data('parent');
 		$(parentDot).removeClass('paused');
 

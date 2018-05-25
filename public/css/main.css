@@ -949,8 +949,7 @@ nav {
 .hero__content {
   display: block;
   text-align: center;
-  padding-top: 10%;
-  height: 100%; }
+  padding: 10% 0 10% 0; }
   @media (min-width: 768px) {
     .hero__content {
       padding: 12% 25px 0 25px;
@@ -967,7 +966,7 @@ nav {
   background-position: center 35%;
   background-size: cover;
   display: block;
-  padding-top: 100%;
+  padding-top: 175%;
   height: 100%; }
   @media (min-width: 768px) {
     .hero__img {
@@ -988,18 +987,24 @@ nav {
 .section {
   background-color: #fafafa;
   display: block;
-  height: 100vh;
+  height: auto;
+  padding-top: 100%;
   position: relative;
   transition: -webkit-filter .85s, filter .85s;
   width: 100vw; }
+  .section.hero {
+    height: auto;
+    padding-top: 0; }
   .section .fp-section {
     -webkit-filter: grayscale(100%);
             filter: grayscale(100%); }
   @media (min-width: 768px) {
-    .section .fp-section {
-      -webkit-filter: grayscale(100%);
-              filter: grayscale(100%);
-      height: calc(100vh - 110px); } }
+    .section {
+      padding-top: 0; }
+      .section .fp-section {
+        -webkit-filter: grayscale(100%);
+                filter: grayscale(100%);
+        height: calc(100vh - 110px); } }
   .section:nth-of-type(2) {
     background-image: url("../imgs/kia-stinger-bag.jpg");
     background-position: center center;
@@ -1019,20 +1024,25 @@ nav {
   .section.active {
     -webkit-filter: grayscale(0%);
             filter: grayscale(0%); }
+  .section--padding {
+    height: auto;
+    padding-top: 0; }
   .section__inset {
     background-position: center center;
     background-size: cover;
     border: 1px solid #6a6c6b;
-    height: 90%;
-    margin: 0 auto;
+    margin: 0 auto 10%;
+    padding-top: 75%;
     -webkit-transform: translateY(5%);
             transform: translateY(5%);
     width: 90%; }
     @media (min-width: 768px) {
-      .fp-section .section__inset {
-        height: calc(100vh - 110px);
-        -webkit-transform: translateY(-5%);
-                transform: translateY(-5%); } }
+      .section__inset {
+        margin-bottom: 0; }
+        .fp-section .section__inset {
+          height: calc(100vh - 200px);
+          -webkit-transform: translateY(-4%);
+                  transform: translateY(-4%); } }
     .section__inset.garrison {
       background-image: url("../imgs/kia-stinger-garrison-bespoke.jpg"); }
     .section__inset.walking {
@@ -1040,7 +1050,13 @@ nav {
   .section--nav {
     color: white;
     background-color: #646464;
+    height: 100vh;
+    max-height: 700px;
+    padding-top: 10%;
     text-align: center; }
+    @media (min-width: 768px) {
+      .section--nav {
+        padding-top: 0; } }
     .section--nav ul {
       max-width: 728px;
       list-style-type: none;
@@ -1084,12 +1100,17 @@ nav {
 .tooltip {
   background-color: white;
   border: 5px solid #F04B33;
-  max-width: 220px;
+  font-size: 10pt;
+  width: 100%;
   height: auto;
   padding: 10px 10px 0;
   position: absolute;
   opacity: 0;
   visibility: hidden; }
+  @media (min-width: 768px) {
+    .tooltip {
+      font-size: 12pt;
+      max-width: 220px; } }
   .tooltip.active {
     visibility: hidden;
     opacity: 0;
@@ -1120,29 +1141,59 @@ nav {
     visibility: visible;
     opacity: 1; } }
 
-[data-parent="moves"] {
-  top: 35%;
-  left: 12%; }
-
-[data-parent="handles"] {
-  bottom: 15%;
-  right: 10%; }
-
 [data-parent="smart"] {
-  top: 35%;
-  left: 12%; }
+  bottom: 0;
+  right: 0; }
+  @media (min-width: 768px) {
+    [data-parent="smart"] {
+      top: 3%;
+      bottom: auto;
+      left: 5%;
+      max-width: 420px; } }
 
 [data-parent="furious"] {
-  bottom: 15%;
-  right: 10%; }
+  bottom: 0;
+  right: 0; }
+  @media (min-width: 768px) {
+    [data-parent="furious"] {
+      bottom: 10%;
+      right: 5%;
+      max-width: 425px; } }
 
 [data-parent="back"] {
-  top: 35%;
-  left: 12%; }
+  bottom: 0;
+  right: 0; }
+  @media (min-width: 768px) {
+    [data-parent="back"] {
+      bottom: 63%;
+      left: 5%; } }
 
 [data-parent="tested"] {
-  bottom: 15%;
-  right: 10%; }
+  bottom: 0;
+  right: 0; }
+  @media (min-width: 768px) {
+    [data-parent="tested"] {
+      bottom: 70%;
+      right: 5%; } }
+
+[data-parent="moves"] {
+  bottom: 0;
+  right: 0; }
+  @media (min-width: 768px) {
+    [data-parent="moves"] {
+      bottom: 60%;
+      right: auto;
+      left: 5%;
+      max-width: 400px; } }
+
+[data-parent="handles"] {
+  bottom: 0;
+  right: 0; }
+  @media (min-width: 768px) {
+    [data-parent="handles"] {
+      bottom: 10%;
+      right: 5%;
+      max-width: 425px; } }
 
 #smart {
   top: 35%;
@@ -1153,15 +1204,16 @@ nav {
   right: 13%; }
 
 #back {
+  top: 38%;
   left: 14%; }
 
 #tested {
   top: 34%;
-  right: 5%; }
+  right: 10%; }
 
 #moves {
-  bottom: 46%;
-  left: 13%; }
+  bottom: 50%;
+  left: 11%; }
   #moves .tooltip {
     width: 95px; }
     #moves .tooltip::after {
@@ -1173,6 +1225,20 @@ nav {
       bottom: -15px; }
     #moves .tooltip.active {
       left: 0; }
+
+#handles {
+  bottom: 25%;
+  right: 6%; }
+  #handles .tooltip {
+    width: 175px; }
+    #handles .tooltip::after {
+      content: '';
+      background-color: #F04B33;
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      top: -15px;
+      right: 15px; }
 
 @-webkit-keyframes moves-slide {
   0% {
@@ -1193,20 +1259,6 @@ nav {
     bottom: 46%;
     left: 13%;
     opacity: 1; } }
-
-#handles {
-  bottom: 32%;
-  right: 13%; }
-  #handles .tooltip {
-    width: 175px; }
-    #handles .tooltip::after {
-      content: '';
-      background-color: #F04B33;
-      width: 15px;
-      height: 15px;
-      position: absolute;
-      top: -15px;
-      right: 15px; }
 
 @-webkit-keyframes handles-slide {
   0% {
@@ -1284,9 +1336,10 @@ nav {
   background-color: white;
   border: 5px solid #F04B33;
   box-shadow: 1px -1px 200px 35px rgba(0, 0, 0, 0.75);
-  height: 85%;
-  position: fixed;
+  height: 90%;
   left: 5%;
+  overflow: hidden;
+  position: fixed;
   top: 2%;
   width: 90%;
   z-index: 99; }
@@ -1296,9 +1349,10 @@ nav {
   .modal__content {
     background-color: white;
     padding: 25px;
-    overflow: hidden;
+    overflow: scroll;
     position: relative;
-    z-index: 99; }
+    z-index: 99;
+    height: 67%; }
     @media (min-width: 768px) {
       .modal__content {
         border: 5px solid #F04B33;
@@ -1316,27 +1370,25 @@ nav {
       min-height: 25%;
       width: 100%; }
     .modal__content__copy {
-      height: 100%;
-      overflow: scroll;
       padding-bottom: 45px;
-      -ms-overflow-style: none;
-      overflow: -moz-scrollbars-none; }
+      -ms-overflow-style: none; }
       .modal__content__copy p {
         line-height: 18pt; }
       .modal__content__copy::-webkit-scrollbar {
         display: none; }
-    .modal__content__fade {
-      background: linear-gradient(to top, white 20%, rgba(255, 255, 255, 0) 80%);
-      background-position: fixed;
-      bottom: 0;
-      content: '';
-      height: 25%;
-      left: 0;
-      position: absolute;
-      pointer-events: none;
-      /* so the text is still selectable */
-      width: 100%;
-      z-index: 999; }
+    @media (min-width: 768px) {
+      .modal__content__fade {
+        background: linear-gradient(to top, white 20%, rgba(255, 255, 255, 0) 80%);
+        background-position: fixed;
+        bottom: 0;
+        content: '';
+        height: 25%;
+        left: 0;
+        position: absolute;
+        pointer-events: none;
+        /* so the text is still selectable */
+        width: 100%;
+        z-index: 999; } }
     .modal__content h2 {
       text-transform: capitalize; }
   .modal #map {

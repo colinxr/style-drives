@@ -2,9 +2,10 @@
 	background-color: white;
 	border: 5px solid $orange;
 	box-shadow: 1px -1px 200px 35px rgba(0,0,0,.75);
-	height: 85%;
-	position: fixed;
+	height: 90%;
 	left: 5%;
+	overflow: hidden;
+	position: fixed;
 	top: 2%;
 	width: 90%;
 	z-index: 99;
@@ -16,9 +17,10 @@
 	&__content {
 		background-color: white;
 		padding: 25px;
-		overflow: hidden;
+		overflow: scroll;
 		position: relative;
 		z-index: 99;
+		height: 67%;
 
 		@include tablet {
 			border: 5px solid $orange;
@@ -42,8 +44,7 @@
 		}
 
 		&__copy {
-			height: 100%;
-			overflow: scroll;
+			// overflow: -moz-scrollbars-vertical !important;
 			padding-bottom: 45px;
 
 			p {
@@ -56,7 +57,7 @@
 			}
 
 			-ms-overflow-style: none;  // IE 10+
-	 		overflow: -moz-scrollbars-none;  // Firefox
+	 		// overflow: -moz-scrollbars-none;  // Firefox
 			&::-webkit-scrollbar {
     		display: none;  // Safari and Chrome
 			}
@@ -64,19 +65,21 @@
 
 
 		&__fade {
-			background: linear-gradient(to top,
-				rgba(255,255,255, 1) 20%,
-				rgba(255,255,255, 0) 80%
-				);
-			background-position: fixed;
-			bottom: 0;
-			content: '';
-			height: 25%;
-			left: 0;
-			position: absolute;
-			pointer-events: none; /* so the text is still selectable */
-			width: 100%;
-			z-index:999;
+			@include tablet {
+				background: linear-gradient(to top,
+					rgba(255,255,255, 1) 20%,
+					rgba(255,255,255, 0) 80%
+					);
+				background-position: fixed;
+				bottom: 0;
+				content: '';
+				height: 25%;
+				left: 0;
+				position: absolute;
+				pointer-events: none; /* so the text is still selectable */
+				width: 100%;
+				z-index:999;
+			}
 		}
 
 		h2 { text-transform: capitalize; }

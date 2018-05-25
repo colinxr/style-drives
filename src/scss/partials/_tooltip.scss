@@ -33,13 +33,19 @@
 .tooltip {
 	background-color: white;
 	border: 5px solid $orange;
-	max-width: 220px;
+	font-size: 10pt;
+	width: 100%;
 	height: auto;
 	padding: 10px 10px 0;
 	position: absolute;
 	// transition: visibility 0s linear 300ms, opacity 300ms;
 	opacity: 0;
 	visibility: hidden;
+
+	@include tablet {
+		font-size: 12pt;
+		max-width: 220px;
+	}
 
 	&.active {
 		// transition: visibility 0s linear 300ms, opacity 300ms;
@@ -71,34 +77,69 @@
   }
 }
 
-[data-parent="moves"] {
-	top: 35%;
-	left: 12%;
-}
-
-[data-parent="handles"] {
-	bottom: 15%;
-	right: 10%;
-}
-
 [data-parent="smart"] {
-	top: 35%;
-	left: 12%;
+	bottom: 0;
+	right: 0;
+
+	@include tablet {
+		top: 3%;
+		bottom: auto;
+		left: 5%;
+		max-width: 420px;
+	}
 }
 
 [data-parent="furious"] {
-	bottom: 15%;
-	right: 10%;
+	bottom: 0;
+	right: 0;
+
+	@include tablet {
+		bottom: 10%;
+		right: 5%;
+		max-width: 425px;
+	}
 }
 
 [data-parent="back"] {
-	top: 35%;
-	left: 12%;
+	bottom: 0;
+	right: 0;
+
+	@include tablet {
+		bottom: 63%;
+		left: 5%;
+	}
 }
 
 [data-parent="tested"] {
-	bottom: 15%;
-	right: 10%;
+	bottom: 0;
+	right: 0;
+
+	@include tablet {
+		bottom: 70%;
+		right: 5%;
+	}
+}
+
+[data-parent="moves"] {
+	bottom: 0;
+	right: 0;
+	@include tablet {
+		bottom: 60%;
+		right: auto;
+		left: 5%;
+		max-width: 400px;
+	}
+}
+
+[data-parent="handles"] {
+	bottom: 0;
+	right: 0;
+
+	@include tablet {
+		bottom: 10%;
+		right: 5%;
+		max-width: 425px;
+	}
 }
 
 #smart {
@@ -112,19 +153,19 @@
 }
 
 #back {
+	top: 38%;
 	left: 14%;
 }
 
 #tested {
 	top: 34%;
-	right: 5%;
-
+	right: 10%;
 }
 
 
 #moves {
-  bottom: 46%;
-  left: 13%;
+  bottom: 50%;
+  left: 11%;
 
   // .active & { @include tooltip-anim(moves-slide); }
 
@@ -146,22 +187,9 @@
   }
  }
 
-@keyframes moves-slide {
-  0% {
-    bottom: 47%;
-    left: 9%;
-    opacity: .5;
-  }
-  100% {
-    bottom: 46%;
-    left: 13%;
-    opacity: 1;
-  }
- }
-
 #handles {
-  bottom: 32%;
-  right: 13%;
+  bottom: 25%;
+  right: 6%;
 
   // .active & { @include tooltip-anim(handles-slide); }
 
@@ -181,6 +209,19 @@
     }
   }
 }
+
+@keyframes moves-slide {
+  0% {
+    bottom: 47%;
+    left: 9%;
+    opacity: .5;
+  }
+  100% {
+    bottom: 46%;
+    left: 13%;
+    opacity: 1;
+  }
+ }
 
 @keyframes handles-slide {
   0% {

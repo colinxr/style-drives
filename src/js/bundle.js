@@ -1555,7 +1555,10 @@ $(document).ready(function () {
 				this.visible = true;
 				this.guide = this.cityData[this.active];
 
-				$.fn.fullpage.setAutoScrolling(false);
+				if (document.querySelector('.fullpage-wrapper')) {
+					$.fn.fullpage.setAutoScrolling(false);
+				};
+
 				document.body.classList.add('stop-scroll');
 			},
 
@@ -1563,7 +1566,10 @@ $(document).ready(function () {
 				this.active = '', this.visible = false;
 				this.guide = {};
 				document.body.classList.remove('stop-scroll');
-				$.fn.fullpage.setAutoScrolling(true);
+
+				if (document.querySelector('.fullpage-wrapper')) {
+					$.fn.fullpage.setAutoScrolling(false);
+				};
 			}
 		},
 		mounted: function mounted() {
