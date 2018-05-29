@@ -832,7 +832,7 @@ nav {
     @media (min-width: 768px) {
       nav .nav__content {
         display: grid;
-        grid-template-columns: 100px 1fr 100px; } }
+        grid-template-columns: 100px 1fr 140px; } }
     nav .nav__content img {
       -webkit-transform: translateY(35%);
               transform: translateY(35%); }
@@ -867,7 +867,7 @@ nav {
     height: calc(100vh - 60px);
     left: 0;
     right: 0;
-    opacity: 0;
+    opacity: .5;
     transition: all .175s ease-in-out;
     z-index: 56; }
     nav.mobile.active {
@@ -1254,6 +1254,8 @@ nav {
 #tested {
   top: 34%;
   right: 10%; }
+  #tested .tooltip {
+    right: 200px; }
 
 #moves {
   bottom: 50%;

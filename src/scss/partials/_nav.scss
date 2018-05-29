@@ -20,7 +20,7 @@ nav {
 
 		@include tablet {
 			display: grid;
-			grid-template-columns: 100px 1fr 100px;
+			grid-template-columns: 100px 1fr 140px;
 		 }
 
 		img { transform: translateY(35%); }
@@ -63,7 +63,7 @@ nav {
 		height: calc(100vh - 60px;);
 		left: 0;
 		right: 0;
-		opacity: 0;
+		opacity: .5;
 		transition: all .175s ease-in-out;
 		z-index: 56;
 
