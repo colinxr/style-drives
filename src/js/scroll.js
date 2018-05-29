@@ -1,5 +1,6 @@
+var fullPageScroll = false;
+
 $(document).ready(function() {
-	var fullPageScroll = false;
 
 	if ($(window).width() > 800) {
 		initFullPage();
@@ -12,7 +13,10 @@ $(document).ready(function() {
 				$.fn.fullpage.destroy('all');
 			}
 	  } else {
-			initFullPage();
+			// if (fullPageScroll === false) {
+			// 	fullPageScroll = true;
+				initFullPage();
+			// }
 		}
 	});
 

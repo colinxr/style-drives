@@ -54,7 +54,7 @@ const cityData = {
 					infoText: 'Garrison Bespoke'
 			}],
 		},
-		imgSrc: 'http://www.contempomedia.com/kia-stinger/public/imgs/halifax.jpg',
+		imgSrc: 'http://www.contempomedia.com/kia-stinger/public/imgs/toronto.jpg',
 	},
 	vancouver: {
 		id: 2,
@@ -99,7 +99,7 @@ const cityData = {
 				infoText: 'Raisu'
 			}],
 		},
-		imgSrc: 'http://www.contempomedia.com/kia-stingerpublic/imgs/halifax.jpg',
+		imgSrc: 'http://www.contempomedia.com/kia-stinger/public/imgs/vancouver.jpg',
 	},
 	halifax: {
 		id: 3,
@@ -177,12 +177,12 @@ const cityData = {
 				infoText: 'Musee d\'Art Contemporain'
 			}],
 		},
-		imgSrc: '/public/imgs/halifax.jpg',
+		imgSrc: 'http://www.contempomedia.com/kia-stinger/public/imgs/montreal.jpg',
 	},
 	calgary: {
 		id: 5,
 		hed: 'Calgary',
-		dek: '',
+		dek: 'The West and the World',
 		desc: 'Home to cowboys, roughnecks and emigres from all corners of the world, Calgary is a young city with a lot going on. </p> <p>Start your day at the <strong>Kensington Riverside Inn</strong>, a stately new Relais & Chateaux boutique hotel steps away from the Bow river. A leisurely drive away via Memorial Parkway, make your  rst stop <strong>OEB</strong>, a local brunch favourite known for its eggs benny and breakfast poutine. While you settle the tab, start up your Stinger and adjust the climate controls from the table with the UVO Intelligence smartphone app. By the time you’re ready to head out, the car will be running, pre-cooled and waiting to ferry you across town in style.</p> <p> A short jaunt across the river via the 12th St. bridge is <strong>The Livery Shop</strong>, a destination for locally made clothes and jewelry. Camp, a Calgary brand specializing in graphic tees, sweatshirts and patches, and CoutuKitsch a local jeweler, share this old stable-turned store, which is also stocked with a selection of books, gifts and accessories.</p> <p> Whenever you’re ready to eat again, or just in need of a change of scenery, head across town along 9th Ave, past Fort Calgary and the Calgary Tower to one of the city’s newest hot spots. With a pastel-hued dining room straight out of a Wes Anderson movie, the <strong>Calcutta Cricket Club</strong> boasts an innovative menu of contemporary Indian food. It’s east-meets-west in the best possible way.',
 		map: {
 			url: 'https://drive.google.com/open?id=1cVOxqkJsFlWWzC5CIdRODAGOBf9C_Wd-&usp=sharing',

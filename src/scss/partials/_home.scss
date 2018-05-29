@@ -1,123 +1,5 @@
 * { box-sizing: border-box; }
 
-nav {
-  background-color: black;
-  bottom: -40px;
-  color: white;
-  height: 40px;
-  left: 0;
-  right: 0;
-	position: fixed;
-	transition: bottom .175s ease-in-out;
-	z-index: 99;
-
-	@include tablet {
-		bottom: -60px;
-		height: 60px;
-	}
-
-	&.visible { bottom: 0; }
-
-  .nav__content {
-		display: none;
-		margin: 0 auto;
-		width: 90%;
-    max-width: 1024px;
-    text-align: center;
-
-		@include tablet { display: block; }
-
-		ul {
-			margin-top: 5px;
-			padding: 0;
-
-			img { transform: translateY(20%);}
-		}
-  }
-}
-
-.nav__list {
-	list-style-type: none;
-	margin-left: 0;
-	text-transform: capitalize;
-
-	li {
-		display: inline;
-		text-transform: capitalize;
-
-		& + li { margin-left: 25px; }
-	}
-
-	a {
-		color: white;
-		text-decoration: none;
-		transition: color .15s;
-
-		&:hover {
-			color: darken(white, 20%);
-		}
-	}
-
-	button {
-		background-color: transparent;
-		border: 0;
-		color: white;
-		cursor: pointer;
-		margin-bottom: 14px;
-		text-transform: capitalize;
-		transition: all .15s;
-
-		&:focus { outline: 0; }
-	}
-
-	button::-moz-focus-inner,
-	input::-moz-focus-inner {
-		border: 0;
-		padding: 0;
-	}
-
-	&--header {
-		display: block;
-		margin-top: 0;
-		@include nav-reset();
-
-		.smaller & {
-			li {
-				display: inline;
-
-				+ li { margin-left: 15px; }
-			}
-		}
-
-		button {
-			color: #4a4a4a;
-			font-family: 'Playfair Display';
-			font-size: 16pt;
-			margin-bottom: 8px;
-			padding: 5px;
-			transition: all .15s;
-			@include underline(#eea849, $orange);
-
-			@include tablet {
-				font-size: 16pt;
-			}
-
-			&:hover { color: darken(#4a4a4a, 20%); }
-			// &:active { color: #4a4a4a; }
-		}
-	}
-
-	&--main {
-		display: block;
-		margin: 0 auto;
-		@include nav-reset();
-		button {
-			font-size: 16pt;
-			@include underline(#434343, #000000);
-		}
-	}
-}
-
 .hero {
 	&__wrapper {
 		display: block;
@@ -149,7 +31,7 @@ nav {
 
 	&__img {
 		background-color: $orange;
-		background-image: url('../imgs/kia-stinger-vertical-1.jpg');
+		// background-image: url('../imgs/kia-stinger-vertical-2.jpg');
 		background-position: center 35%;
 		background-size: cover;
 		display: block;
@@ -194,7 +76,6 @@ nav {
 	}
 
 	@include tablet {
-		// height: 100vh;
 		padding-top: 0;
 
 		& .fp-section {
@@ -203,23 +84,23 @@ nav {
 		}
 
   &:nth-of-type(2) {
-		background-image: url('../imgs/kia-stinger-bag.jpg');
+		background-image: url('../imgs/kia-stinger-bag-opt.jpg');
     background-position: center center;
     background-size: cover;
   }
 
   &:nth-of-type(4) {
-    background-image: url('../imgs/kia-stinger-3.jpg');
+    background-image: url('../imgs/kia-stinger-3-opt.jpg');
     background-position: center center;
     background-size: cover;
   }
   &:nth-of-type(5) {
-    background-image: url('../imgs/kia-stinger-drake-commissary.jpg');
+    background-image: url('../imgs/kia-stinger-drake-commissary-opt.jpg');
     background-position: center center;
     background-size: cover;
   }
   &:nth-of-type(7) {
-    background-image: url('../imgs/kia-stinger-good-neighbour.jpg');
+    background-image: url('../imgs/kia-stinger-good-neighbour-opt.jpg');
     background-position: center center;
     background-size: cover;
   }
@@ -239,24 +120,25 @@ nav {
     border: 1px solid #6a6c6b;
 		margin: 0 auto 10%;
 		padding-top: 75%;
-		transform: translateY(5%);
+		transform: translateY(6%);
     width: 90%;
 
 		@include tablet {
 			margin-bottom: 0;
-			
+
 			.fp-section & {
-				height: calc(100vh - 200px);
-				transform: translateY(-4%);
+				height: calc(100vh - 120px);
+				padding-top: 0;
+				transform: translateY(-3%);
 			}
 		}
 
     &.garrison {
-      background-image: url('../imgs/kia-stinger-garrison-bespoke.jpg');
+      background-image: url('../imgs/kia-stinger-garrison-bespoke-opt.jpg');
     }
 
     &.walking {
-      background-image: url('../imgs/kia-stinger-5.jpg');
+      background-image: url('../imgs/kia-stinger-5-opt.jpg');
     }
   }
 

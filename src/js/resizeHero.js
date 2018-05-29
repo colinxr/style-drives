@@ -16,9 +16,6 @@ $(document).ready(function() {
 		var contentHeight = heroContent.height();
 		var vpHeight = $(window).height();
 
-		console.log(contentHeight);
-		console.log(vpHeight);
-
 		if (contentHeight > vpHeight &&
 		!heroContent.hasClass('smaller')) {
 			heroContent.addClass('smaller');

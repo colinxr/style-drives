@@ -811,40 +811,71 @@ h3 {
     -webkit-transform: rotate(1800deg);
             transform: rotate(1800deg); } }
 
-* {
-  box-sizing: border-box; }
-
 nav {
   background-color: black;
-  bottom: -40px;
+  bottom: -60px;
   color: white;
-  height: 40px;
+  height: 60px;
   left: 0;
   right: 0;
   position: fixed;
-  transition: bottom .175s ease-in-out;
-  z-index: 99; }
-  @media (min-width: 768px) {
-    nav {
-      bottom: -60px;
-      height: 60px; } }
+  transition: all .175s ease-in-out;
+  z-index: 9; }
   nav.visible {
     bottom: 0; }
   nav .nav__content {
-    display: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     margin: 0 auto;
-    width: 90%;
     max-width: 1024px;
-    text-align: center; }
+    width: 90%; }
     @media (min-width: 768px) {
       nav .nav__content {
-        display: block; } }
+        display: grid;
+        grid-template-columns: 100px 1fr 100px; } }
+    nav .nav__content img {
+      -webkit-transform: translateY(35%);
+              transform: translateY(35%); }
     nav .nav__content ul {
-      margin-top: 5px;
-      padding: 0; }
-      nav .nav__content ul img {
-        -webkit-transform: translateY(20%);
-                transform: translateY(20%); }
+      display: none; }
+      nav .nav__content ul.active {
+        display: block; }
+      @media (min-width: 768px) {
+        nav .nav__content ul {
+          display: block;
+          margin: 0 auto;
+          padding: 0;
+          -webkit-transform: translateY(50%);
+                  transform: translateY(50%); } }
+    nav .nav__content .menu {
+      display: block;
+      text-align: right;
+      -webkit-transform: translateY(50%);
+              transform: translateY(50%);
+      transition: .15s color; }
+      @media (min-width: 768px) {
+        nav .nav__content .menu {
+          display: none; } }
+      nav .nav__content .menu span {
+        cursor: pointer; }
+        nav .nav__content .menu span:hover {
+          color: #cccccc; }
+  nav.mobile {
+    background-color: black;
+    bottom: -100vh;
+    color: white;
+    height: calc(100vh - 60px);
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: all .175s ease-in-out;
+    z-index: 56; }
+    nav.mobile.active {
+      bottom: 60px;
+      opacity: 1; }
+    nav.mobile header {
+      display: grid;
+      grid-template-columns: 1fr 1fr; }
 
 .nav__list {
   list-style-type: none;
@@ -937,6 +968,19 @@ nav {
       .nav__list--main button:active {
         background-image: linear-gradient(120deg, #000000 0%, #434343 100%);
         background-size: 100% 88%; }
+  .nav__list--mobile {
+    text-align: center;
+    -webkit-transform: translateY(50%);
+            transform: translateY(50%); }
+    .nav__list--mobile button {
+      color: white;
+      font-size: 21pt; }
+      .nav__list--mobile button:hover {
+        color: #fafafa;
+        opacity: .5s; }
+
+* {
+  box-sizing: border-box; }
 
 .hero__wrapper {
   display: block; }
@@ -962,7 +1006,6 @@ nav {
 
 .hero__img {
   background-color: #F04B33;
-  background-image: url("../imgs/kia-stinger-vertical-1.jpg");
   background-position: center 35%;
   background-size: cover;
   display: block;
@@ -1006,19 +1049,19 @@ nav {
                 filter: grayscale(100%);
         height: calc(100vh - 110px); } }
   .section:nth-of-type(2) {
-    background-image: url("../imgs/kia-stinger-bag.jpg");
+    background-image: url("../imgs/kia-stinger-bag-opt.jpg");
     background-position: center center;
     background-size: cover; }
   .section:nth-of-type(4) {
-    background-image: url("../imgs/kia-stinger-3.jpg");
+    background-image: url("../imgs/kia-stinger-3-opt.jpg");
     background-position: center center;
     background-size: cover; }
   .section:nth-of-type(5) {
-    background-image: url("../imgs/kia-stinger-drake-commissary.jpg");
+    background-image: url("../imgs/kia-stinger-drake-commissary-opt.jpg");
     background-position: center center;
     background-size: cover; }
   .section:nth-of-type(7) {
-    background-image: url("../imgs/kia-stinger-good-neighbour.jpg");
+    background-image: url("../imgs/kia-stinger-good-neighbour-opt.jpg");
     background-position: center center;
     background-size: cover; }
   .section.active {
@@ -1033,20 +1076,21 @@ nav {
     border: 1px solid #6a6c6b;
     margin: 0 auto 10%;
     padding-top: 75%;
-    -webkit-transform: translateY(5%);
-            transform: translateY(5%);
+    -webkit-transform: translateY(6%);
+            transform: translateY(6%);
     width: 90%; }
     @media (min-width: 768px) {
       .section__inset {
         margin-bottom: 0; }
         .fp-section .section__inset {
-          height: calc(100vh - 200px);
-          -webkit-transform: translateY(-4%);
-                  transform: translateY(-4%); } }
+          height: calc(100vh - 120px);
+          padding-top: 0;
+          -webkit-transform: translateY(-3%);
+                  transform: translateY(-3%); } }
     .section__inset.garrison {
-      background-image: url("../imgs/kia-stinger-garrison-bespoke.jpg"); }
+      background-image: url("../imgs/kia-stinger-garrison-bespoke-opt.jpg"); }
     .section__inset.walking {
-      background-image: url("../imgs/kia-stinger-5.jpg"); }
+      background-image: url("../imgs/kia-stinger-5-opt.jpg"); }
   .section--nav {
     color: white;
     background-color: #646464;
@@ -1230,7 +1274,8 @@ nav {
   bottom: 25%;
   right: 6%; }
   #handles .tooltip {
-    width: 175px; }
+    width: 175px;
+    right: 300px; }
     #handles .tooltip::after {
       content: '';
       background-color: #F04B33;
@@ -1376,19 +1421,6 @@ nav {
         line-height: 18pt; }
       .modal__content__copy::-webkit-scrollbar {
         display: none; }
-    @media (min-width: 768px) {
-      .modal__content__fade {
-        background: linear-gradient(to top, white 20%, rgba(255, 255, 255, 0) 80%);
-        background-position: fixed;
-        bottom: 0;
-        content: '';
-        height: 25%;
-        left: 0;
-        position: absolute;
-        pointer-events: none;
-        /* so the text is still selectable */
-        width: 100%;
-        z-index: 999; } }
     .modal__content h2 {
       text-transform: capitalize; }
   .modal #map {

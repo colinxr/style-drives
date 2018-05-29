@@ -112,7 +112,7 @@ $(document).ready(function() {
 				document.body.classList.remove('stop-scroll');
 
 				if (document.querySelector('.fullpage-wrapper')) {
-					$.fn.fullpage.setAutoScrolling(false);
+					$.fn.fullpage.setAutoScrolling(true);
 				};
 			},
 		},

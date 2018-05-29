@@ -31,8 +31,9 @@
     ></city-guide>
     <nav>
       <div class="nav__content">
-        <ul class="nav__list">
-					<li class="nav-list-item"><img src="public/imgs/sharp-logo-white.svg" alt="Sharp Magazine"></li>
+				<img src="public/imgs/sharp-logo-white.svg" alt="Sharp Magazine" />
+				<ul class="nav__list">
+					<!-- <li class="nav-list-item"></li> -->
           <nav-list-item
             v-for="city in cities"
             v-bind:key="city.id"
@@ -40,8 +41,28 @@
             v-on:click.native="setActive"
           ></nav-list-item>
         </ul>
+				<div class="menu">
+					<span>View City Guides</span>
+				</div>
       </div>
     </nav>
+		<nav class="mobile">
+			<!-- <div class="nav__content">
+					<img src="public/imgs/sharp-logo-white.svg" alt="Sharp Magazine" />
+					<div class="menu">
+						<span>Close City Guides</span>
+					</div>
+			</div> -->
+
+			<ul class="nav__list nav__list--header nav__list--mobile">
+				<nav-list-item
+					v-for="city in cities"
+					v-bind:key="city.id"
+					v-bind:city="city"
+					v-on:click.native="setActive"
+				></nav-list-item>
+			</ul>
+		</nav>
 		<div id="fullpage">
 	  	<div class="section hero">
 				<div class="hero__wrapper">
@@ -62,7 +83,7 @@
 							></nav-list-item>
 						</ul>
 		  		</div>
-					<div class="hero__img" data-img="public/imgs/kia-stinger-vertical-1.jpg" style="background-image: url('');">
+					<div class="hero__img" data-img="public/imgs/kia-stinger-vertical-2-optimized.jpg" style="background-image: url('');">
 						<img src="public/imgs/hero-placeholder.jpg" class="hero__img__placeholder"/>
 					</div>
 				</div>
@@ -78,8 +99,8 @@
 	      <div class="hover-dot" id="furious">
 	        <div class="tooltip">
 						<span class="tooltip__close"><strong>X</strong></span>
-	          <strong>Fast and Furious</strong>
-	          <p>The Stinger is far from shy under its hood. Its 3.3 litre twin turbocharged V6 engine produces an inspiring 365 horsepower and 376 lb.-ft. of torque.</p>
+	          <strong>Light Moves</strong>
+	          <p>THe Stinger comes with adaptive headlights to respond to steering angle.</p>
 	        </div>
 	      </div>
 			</div>
@@ -106,8 +127,8 @@
 	      <div class="hover-dot" id="moves">
 	        <div class="tooltip">
 						<span class="tooltip__close"><strong>X</strong></span>
-	          <strong>Light Moves</strong>
-	          <p>The Stinger comes with adaptive headlights that respond to steering angle and road pitch</p>
+	          <strong>Fast and Furious</strong>
+	          <p>The Stinger is far from shy under its hood. Its 3.3-litre twin-turbcharged V6 engine produces an inspiring 365 horsepower and 376 lb.-ft. of torque.</p>
 	        </div>
 	      </div>
 	      <div class="hover-dot" id="handles">
@@ -169,7 +190,7 @@
 					<img v-bind:src="guide.imgSrc" />
 					<p v-html="guide.desc">{{ guide.desc }}</p>
 				</div>
-				<div class="modal__content__fade"></div>
+				<!-- <div class="modal__content__fade"></div> -->
 			</div>
 		</div>
 	</script>
