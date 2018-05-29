@@ -40,12 +40,16 @@ $(document).ready(function() {
 	function resizeNav() {
 		var vpWidth = $(window).width();
 
-		if (vpWidth > 800 && mobileNav.hasClass('active')) {
+		if (vpWidth > 768 && mobileNav.hasClass('active')) {
 			menuBtn.css('display', 'block');
 		}
 
-		if (vpWidth > 800 && !mobileNav.hasClass('active')) {
+		if (vpWidth > 768 && !mobileNav.hasClass('active')) {
 			menuBtn.css('display', 'none');
+		}
+
+		if (vpWidth < 768) {
+			menuBtn.css('display', 'block');
 		}
 
 	}

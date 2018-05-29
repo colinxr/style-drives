@@ -20634,12 +20634,16 @@ $(document).ready(function() {
 	function resizeNav() {
 		var vpWidth = $(window).width();
 
-		if (vpWidth > 800 && mobileNav.hasClass('active')) {
+		if (vpWidth > 768 && mobileNav.hasClass('active')) {
 			menuBtn.css('display', 'block');
 		}
 
-		if (vpWidth > 800 && !mobileNav.hasClass('active')) {
+		if (vpWidth > 768 && !mobileNav.hasClass('active')) {
 			menuBtn.css('display', 'none');
+		}
+
+		if (vpWidth < 768) {
+			menuBtn.css('display', 'block');
 		}
 
 	}
@@ -20677,21 +20681,18 @@ var fullPageScroll = false;
 
 $(document).ready(function() {
 
-	if ($(window).width() > 800) {
+	if ($(window).width() > 768) {
 		initFullPage();
 	}
 
 	$(window).resize(function() {
-		if ($(window).width() <= 800 ) {
+		if ($(window).width() <= 768 ) {
 			if (fullPageScroll) {
 				fullPageScroll = false;
 				$.fn.fullpage.destroy('all');
 			}
 	  } else {
-			// if (fullPageScroll === false) {
-			// 	fullPageScroll = true;
-				initFullPage();
-			// }
+			initFullPage();
 		}
 	});
 

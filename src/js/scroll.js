@@ -2,21 +2,18 @@ var fullPageScroll = false;
 
 $(document).ready(function() {
 
-	if ($(window).width() > 800) {
+	if ($(window).width() > 768) {
 		initFullPage();
 	}
 
 	$(window).resize(function() {
-		if ($(window).width() <= 800 ) {
+		if ($(window).width() <= 768 ) {
 			if (fullPageScroll) {
 				fullPageScroll = false;
 				$.fn.fullpage.destroy('all');
 			}
 	  } else {
-			// if (fullPageScroll === false) {
-			// 	fullPageScroll = true;
-				initFullPage();
-			// }
+			initFullPage();
 		}
 	});
 
