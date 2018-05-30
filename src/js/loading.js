@@ -1,4 +1,6 @@
+console.log('test 1');
 $(document).ready(function() {
+	console.log('test 2');
 	var hero = $('.hero__img');
 
 	$('#loading ').remove();

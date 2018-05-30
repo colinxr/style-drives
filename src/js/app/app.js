@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import cityData from './cityData.js';
 import * as VueGoogleMaps from 'vue2-google-maps'
 import vClickOutside from 'v-click-outside';
@@ -35,6 +36,12 @@ $(document).ready(function() {
 			guide: Object,
 		},
 		template: '#city-guide',
+		created() {
+		  document.addEventListener('resize', this.windowResize);
+		},
+		destroyed() {
+		  document.removeEventListener('resize', this.windowResize);
+		},
 		methods: {
 			closeButton: function() {
 				this.clearInfoWindow();
