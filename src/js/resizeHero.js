@@ -1,27 +1,36 @@
-$(document).ready(function() {
-	var heroContent = $('.hero__content');
+document.addEventListener('DOMContentLoaded', function() {
+	var heroContent = document.querySelector('.hero__content');
 	var resizeTimeout;
 
 	resizeHero();
 
-	$(window).resize(function(e) {
+	window.addEventListener('resize', function(e) {
 		clearTimeout(resizeTimeout);
 		resizeTimeout = setTimeout(function() {
 			resizeHero();
-		}, 250);
+		});
 	});
 
+	function resizeHero() {
+		console.log('resizing! vanilla js');
 
-	function resizeHero(){
-		var contentHeight = heroContent.height();
-		var vpHeight = $(window).height();
+		var contentHeight = heroContent.innerHeight
+		|| heroContent.clientHeight
+		|| heroContent.clientHeight;
+
+		var vpHeight = window.innerHeight
+		|| document.documentElement.clientHeight
+		|| document.body.clientHeight;
+
+		console.log(contentHeight);
+		console.log(vpHeight);
 
 		if (contentHeight > vpHeight &&
-		!heroContent.hasClass('smaller')) {
-			heroContent.addClass('smaller');
+		!heroContent.classList.contains('smaller')) {
+			heroContent.classList.add('smaller');
 		} else if (contentHeight < vpHeight &&
-		heroContent.hasClass('smaller')) {
-			heroContent.removeClass('smaller');
+		heroContent.classList.contains('smaller')) {
+			heroContent.classList.remove('smaller');
 		}
 	}
 });

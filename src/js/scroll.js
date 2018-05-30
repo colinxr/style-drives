@@ -13,7 +13,11 @@ $(document).ready(function() {
 				$.fn.fullpage.destroy('all');
 			}
 	  } else {
+			// turn on full page functionality
 			initFullPage();
+
+			// if modal is open, keep scrolling disabled
+			if ($('.modal').length) $.fn.fullpage.setAutoScrolling(false);
 		}
 	});
 

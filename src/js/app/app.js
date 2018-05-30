@@ -75,6 +75,10 @@ $(document).ready(function() {
 					this.infoWinOpen = true;
 					this.currentMidx = idx;
 			 	}
+			},
+
+			windowResize: function() {
+				console.log('window resized');
 			}
 		}
 	});

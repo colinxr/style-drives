@@ -22345,6 +22345,10 @@ $(document).ready(function () {
 						this.infoWinOpen = true;
 						this.currentMidx = idx;
 					}
+			},
+
+			windowResize: function windowResize() {
+				console.log('window resized');
 			}
 		}
 	});
@@ -30109,9 +30113,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /***/ })
 /******/ ]);
-console.log('test 1');
 $(document).ready(function() {
-	console.log('test 2');
 	var hero = $('.hero__img');
 
 	$('#loading ').remove();
@@ -30127,8 +30129,6 @@ $(document).ready(function() {
 		hero.children().remove();
 	}
 });
-
- 
 
 $(document).ready(function() {
 	var scrollTimeout;
@@ -30187,30 +30187,39 @@ $(document).ready(function() {
 	}
 });
 
-$(document).ready(function() {
-	var heroContent = $('.hero__content');
+document.addEventListener('DOMContentLoaded', function() {
+	var heroContent = document.querySelector('.hero__content');
 	var resizeTimeout;
 
 	resizeHero();
 
-	$(window).resize(function(e) {
+	window.addEventListener('resize', function(e) {
 		clearTimeout(resizeTimeout);
 		resizeTimeout = setTimeout(function() {
 			resizeHero();
-		}, 250);
+		});
 	});
 
+	function resizeHero() {
+		console.log('resizing! vanilla js');
 
-	function resizeHero(){
-		var contentHeight = heroContent.height();
-		var vpHeight = $(window).height();
+		var contentHeight = heroContent.innerHeight
+		|| heroContent.clientHeight
+		|| heroContent.clientHeight;
+
+		var vpHeight = window.innerHeight
+		|| document.documentElement.clientHeight
+		|| document.body.clientHeight;
+
+		console.log(contentHeight);
+		console.log(vpHeight);
 
 		if (contentHeight > vpHeight &&
-		!heroContent.hasClass('smaller')) {
-			heroContent.addClass('smaller');
+		!heroContent.classList.contains('smaller')) {
+			heroContent.classList.add('smaller');
 		} else if (contentHeight < vpHeight &&
-		heroContent.hasClass('smaller')) {
-			heroContent.removeClass('smaller');
+		heroContent.classList.contains('smaller')) {
+			heroContent.classList.remove('smaller');
 		}
 	}
 });
@@ -30230,7 +30239,11 @@ $(document).ready(function() {
 				$.fn.fullpage.destroy('all');
 			}
 	  } else {
+			// turn on full page functionality
 			initFullPage();
+
+			// if modal is open, keep scrolling disabled
+			if ($('.modal').length) $.fn.fullpage.setAutoScrolling(false);
 		}
 	});
 

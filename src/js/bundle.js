@@ -5461,6 +5461,10 @@ $(document).ready(function () {
 						this.infoWinOpen = true;
 						this.currentMidx = idx;
 					}
+			},
+
+			windowResize: function windowResize() {
+				console.log('window resized');
 			}
 		}
 	});
