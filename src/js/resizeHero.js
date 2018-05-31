@@ -12,8 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 
 	function resizeHero() {
-		console.log('resizing! vanilla js');
-
 		var contentHeight = heroContent.innerHeight
 		|| heroContent.clientHeight
 		|| heroContent.clientHeight;
@@ -21,9 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		var vpHeight = window.innerHeight
 		|| document.documentElement.clientHeight
 		|| document.body.clientHeight;
-
-		console.log(contentHeight);
-		console.log(vpHeight);
 
 		if (contentHeight > vpHeight &&
 		!heroContent.classList.contains('smaller')) {

@@ -30113,78 +30113,76 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /***/ })
 /******/ ]);
-$(document).ready(function() {
-	var hero = $('.hero__img');
+document.addEventListener('DOMContentLoaded', function() {
+	var loading 		= document.getElementById('loading');
+	var hero 				= document.querySelector('.hero__img');
+	var placeholder = document.querySelector('.hero__img__placeholder')
+	var imgSource 	= hero.getAttribute('data-img');
+	var heroImg 		= new Image();
 
-	$('#loading ').remove();
-
-	var heroImg = new Image();
-	heroImg.src = hero.data('img');
+	document.getElementById('app').removeChild(loading);
+	heroImg.setAttribute('src', imgSource);
 
 	heroImg.onload = function() {
 		var bgCss = 'url(' + heroImg.src + ')';
-		hero.addClass('bgLoaded');
-		hero.removeAttr('data-img');
-		hero.css('background-image', bgCss);
-		hero.children().remove();
+		hero.classList.add('bgLoaded');
+		hero.removeAttribute('data-img');
+		hero.style.backgroundImage = bgCss;
+		hero.removeChild(placeholder);
 	}
 });
 
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
 	var scrollTimeout;
-	var navBar = $('nav.main');
-	var mobileNav = $('nav.mobile');
-	var navList = $('.nav__list');
-	var menuBtn = $('.menu');
-
 	var resizeTimeout;
+	var navBar = document.querySelector('nav.main');
+	var mobileNav = document.querySelector('nav.mobile');
+	var navList = document.querySelector('.nav__list');
+	var menuBtn = document.querySelector('.menu');
+	var menuBtnText = document.querySelector('.menu span');
 
-	$(window).scroll(function(e) {
-		if ($(document).scrollTop() > 100 && fullPageScroll === false) {
-			navBar.addClass('visible');
+	window.addEventListener('scroll', function() {
+		var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+		console.log('wtf');
+		console.log(scrollTop);
+		if (scrollTop > 100 && fullPageScroll === false) {
+			console.log('wtffffff');
+			navBar.classList.add('visible');
 		}
 	});
 
-	$(window).resize(function(e) {
+	window.addEventListener('resize', function() {
 		clearTimeout(resizeTimeout);
 		resizeTimeout = setTimeout(function() {
 			resizeNav();
 		}, 250);
 	});
 
-	menuBtn.on('click', function() {
+	menuBtn.addEventListener('click', function(e) {
+		e.currentTarget.classList.toggle('open');
+		mobileNav.classList.toggle('active');
 
-		$(this).toggleClass('open');
-		mobileNav.toggleClass('active');
-
-		setMenuBtnText($(this));
+		setMenuBtnText(e.currentTarget);
 		resizeNav();
 	});
 
 	function setMenuBtnText(el) {
-		if (el.hasClass('open')) {
-			el.children().text('Close City Guides');
-		} else {
-			el.children().text('Open City Guides');
-		}
+		var open = el.classList.contains('open');
+
+		menuBtnText.textContent = (open === true) ? 'Close City Guides' : 'Open City Guides';
 	}
 
 	function resizeNav() {
-		var vpWidth = $(window).width();
+		var vpWidth = window.outerWidth;
 
-		if (vpWidth > 768 && mobileNav.hasClass('active')) {
-			menuBtn.css('display', 'block');
+		if (vpWidth < 768) menuBtn.style.display = 'block';
+
+		if (vpWidth > 768) {
+			if (mobileNav.classList.contains('active')) menuBtn.style.display = 'block';
+			if (!mobileNav.classList.contains('active')) menuBtn.style.display = 'none';
 		}
-
-		if (vpWidth > 768 && !mobileNav.hasClass('active')) {
-			menuBtn.css('display', 'none');
-		}
-
-		if (vpWidth < 768) {
-			menuBtn.css('display', 'block');
-		}
-
 	}
+
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -30201,8 +30199,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 
 	function resizeHero() {
-		console.log('resizing! vanilla js');
-
 		var contentHeight = heroContent.innerHeight
 		|| heroContent.clientHeight
 		|| heroContent.clientHeight;
@@ -30210,9 +30206,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		var vpHeight = window.innerHeight
 		|| document.documentElement.clientHeight
 		|| document.body.clientHeight;
-
-		console.log(contentHeight);
-		console.log(vpHeight);
 
 		if (contentHeight > vpHeight &&
 		!heroContent.classList.contains('smaller')) {

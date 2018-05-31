@@ -1,16 +1,18 @@
-$(document).ready(function() {
-	var hero = $('.hero__img');
+document.addEventListener('DOMContentLoaded', function() {
+	var loading 		= document.getElementById('loading');
+	var hero 				= document.querySelector('.hero__img');
+	var placeholder = document.querySelector('.hero__img__placeholder')
+	var imgSource 	= hero.getAttribute('data-img');
+	var heroImg 		= new Image();
 
-	$('#loading ').remove();
-
-	var heroImg = new Image();
-	heroImg.src = hero.data('img');
+	document.getElementById('app').removeChild(loading);
+	heroImg.setAttribute('src', imgSource);
 
 	heroImg.onload = function() {
 		var bgCss = 'url(' + heroImg.src + ')';
-		hero.addClass('bgLoaded');
-		hero.removeAttr('data-img');
-		hero.css('background-image', bgCss);
-		hero.children().remove();
+		hero.classList.add('bgLoaded');
+		hero.removeAttribute('data-img');
+		hero.style.backgroundImage = bgCss;
+		hero.removeChild(placeholder);
 	}
 });
