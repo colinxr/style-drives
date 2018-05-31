@@ -1,24 +1,35 @@
-$(document).ready(function() {
-	var section =('.section');
-	var hoverDot = '.hover-dot';
-	var closeBtn = '.tooltip__close';
+document.addEventListener('DOMContentLoaded', function() {
+	var sections  = document.querySelectorAll('.section');
+	var hoverDot = document.querySelector('.hover-dot');
+	var closeBtn = document.querySelector('.tool-top__close');
 
-	$(section).on('click', hoverDot, function() {
-		var id = $(this).attr('id');
-		$(this).children('.tooltip')
-			.attr('data-parent', id)
-			.appendTo($(this).parent())
-			.addClass('active');
+	Object.keys(sections)
+		.map(function(i) {
+			sections[i].addEventListener('click', toggleToolTip)
+		});
 
-		$(this).addClass('paused');
-	});
+	function toggleToolTip(e) {
+		var _this 	= e.target;
 
-	$(section).on('click', closeBtn, function() {
-		var parentDot = '#'+ $(this).parent('.tooltip').data('parent');
-		$(parentDot).removeClass('paused');
+		if (_this.classList.contains('hover-dot')) {
+			var id 			= _this.getAttribute('id');
+			var toolTip = _this.childNodes[0];
 
-		$(this).parent('.tooltip')
-			.removeClass('active')
-			.appendTo(parentDot);
-	});
+			toolTip.setAttribute('data-parent', id);
+			toolTip.classList.add('active');
+
+			_this.parentNode.appendChild(toolTip);
+			_this.classList.add('paused');
+		}
+
+		if (_this.classList.contains('tooltip__close')) {
+			var toolTip 	= _this.parentNode;
+			var id 				= toolTip.getAttribute('data-parent');
+			var parentDot = document.getElementById(id);
+
+			toolTip.classList.remove('active');
+			parentDot.classList.remove('paused');
+			parentDot.appendChild(toolTip);
+		}
+	}
 });

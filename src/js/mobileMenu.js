@@ -9,10 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	window.addEventListener('scroll', function() {
 		var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-		console.log('wtf');
-		console.log(scrollTop);
 		if (scrollTop > 100 && fullPageScroll === false) {
-			console.log('wtffffff');
 			navBar.classList.add('visible');
 		}
 	});

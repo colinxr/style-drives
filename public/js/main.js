@@ -30143,10 +30143,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	window.addEventListener('scroll', function() {
 		var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-		console.log('wtf');
-		console.log(scrollTop);
 		if (scrollTop > 100 && fullPageScroll === false) {
-			console.log('wtffffff');
 			navBar.classList.add('visible');
 		}
 	});
@@ -30271,29 +30268,66 @@ $(document).ready(function() {
 	}
 });
 
-$(document).ready(function() {
-	var section =('.section');
-	var hoverDot = '.hover-dot';
-	var closeBtn = '.tooltip__close';
+// $(document).ready(function() {
+// 	var section =('.section');
+// 	var hoverDot = '.hover-dot';
+// 	var closeBtn = '.tooltip__close';
+//
+// 	// $(section).on('click', hoverDot, function() {
+// 	// 	var id = $(this).attr('id');
+// 	// 	$(this).children('.tooltip')
+// 	// 		.attr('data-parent', id)
+// 	// 		.appendTo($(this).parent())
+// 	// 		.addClass('active');
+// 	//
+// 	// 	$(this).addClass('paused');
+// 	// });
+//
+// 	$(section).on('click', closeBtn, function() {
+// 		var parentDot = '#'+ $(this).parent('.tooltip').data('parent');
+// 		$(parentDot).removeClass('paused');
+//
+// 		$(this).parent('.tooltip')
+// 			.removeClass('active')
+// 			.appendTo(parentDot);
+// 	});
+// });
 
-	$(section).on('click', hoverDot, function() {
-		var id = $(this).attr('id');
-		$(this).children('.tooltip')
-			.attr('data-parent', id)
-			.appendTo($(this).parent())
-			.addClass('active');
 
-		$(this).addClass('paused');
-	});
+document.addEventListener('DOMContentLoaded', function() {
+	var sections  = document.querySelectorAll('.section');
+	var hoverDot = document.querySelector('.hover-dot');
+	var closeBtn = document.querySelector('.tool-top__close');
 
-	$(section).on('click', closeBtn, function() {
-		var parentDot = '#'+ $(this).parent('.tooltip').data('parent');
-		$(parentDot).removeClass('paused');
+	Object.keys(sections)
+		.map(function(i) {
+			sections[i].addEventListener('click', toggleToolTip)
+		});
 
-		$(this).parent('.tooltip')
-			.removeClass('active')
-			.appendTo(parentDot);
-	});
+	function toggleToolTip(e) {
+		var _this 	= e.target;
+
+		if (_this.classList.contains('hover-dot')) {
+			var id 			= _this.getAttribute('id');
+			var toolTip = _this.childNodes[0];
+
+			toolTip.setAttribute('data-parent', id);
+			toolTip.classList.add('active');
+
+			_this.parentNode.appendChild(toolTip);
+			_this.classList.add('paused');
+		}
+
+		if (_this.classList.contains('tooltip__close')) {
+			var toolTip 	= _this.parentNode;
+			var id 				= toolTip.getAttribute('data-parent');
+			var parentDot = document.getElementById(id);
+
+			toolTip.classList.remove('active');
+			parentDot.classList.remove('paused');
+			parentDot.appendChild(toolTip);
+		}
+	}
 });
 
 //# sourceMappingURL=main.js.map
