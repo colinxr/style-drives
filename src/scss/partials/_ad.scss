@@ -1,0 +1,23 @@
+#ad {
+	display: none;
+
+	@include tablet {
+		// position: fixed;
+		display: block;
+		background-color: #eaeaea;
+		height: 296px;
+		padding: 24px;
+		width: 100%;
+		z-index: 999;
+	}
+
+
+	.billboard {
+		@include tablet {
+			background-color: gray;
+			height: 250px;
+			width: 970px;
+			margin: 0 auto;
+		}
+	}
+}

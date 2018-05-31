@@ -811,6 +811,23 @@ h3 {
     -webkit-transform: rotate(1800deg);
             transform: rotate(1800deg); } }
 
+#ad {
+  display: none; }
+  @media (min-width: 768px) {
+    #ad {
+      display: block;
+      background-color: #eaeaea;
+      height: 296px;
+      padding: 24px;
+      width: 100%;
+      z-index: 999; } }
+  @media (min-width: 768px) {
+    #ad .billboard {
+      background-color: gray;
+      height: 250px;
+      width: 970px;
+      margin: 0 auto; } }
+
 nav {
   background-color: black;
   bottom: -60px;
@@ -991,7 +1008,7 @@ nav {
     .hero__wrapper {
       display: grid;
       grid-template-columns: 1fr 56%;
-      height: 100%; } }
+      height: calc(100% - 296px); } }
 
 .hero__content {
   display: block;

@@ -30248,6 +30248,7 @@ $(document).ready(function() {
 				scrollingSpeed: 600,
 				scrollBar: true,
 				autoScrolling: true,
+				normalScrollElements: '#ad',
 				easing: 'easeInOutCubic',
 
 				onLeave: function(index, nextIndex, direction) {
