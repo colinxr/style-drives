@@ -22312,6 +22312,7 @@ $(document).ready(function () {
 			document.removeEventListener('resize', this.windowResize);
 		},
 
+
 		methods: {
 			closeButton: function closeButton() {
 				this.clearInfoWindow();
@@ -30217,7 +30218,6 @@ document.addEventListener('DOMContentLoaded', function() {
 var fullPageScroll = false;
 
 $(document).ready(function() {
-
 	if ($(window).width() > 768) {
 		initFullPage();
 	}
@@ -30268,65 +30268,110 @@ $(document).ready(function() {
 	}
 });
 
-// $(document).ready(function() {
-// 	var section =('.section');
-// 	var hoverDot = '.hover-dot';
-// 	var closeBtn = '.tooltip__close';
-//
-// 	// $(section).on('click', hoverDot, function() {
-// 	// 	var id = $(this).attr('id');
-// 	// 	$(this).children('.tooltip')
-// 	// 		.attr('data-parent', id)
-// 	// 		.appendTo($(this).parent())
-// 	// 		.addClass('active');
-// 	//
-// 	// 	$(this).addClass('paused');
-// 	// });
-//
-// 	$(section).on('click', closeBtn, function() {
-// 		var parentDot = '#'+ $(this).parent('.tooltip').data('parent');
-// 		$(parentDot).removeClass('paused');
-//
-// 		$(this).parent('.tooltip')
-// 			.removeClass('active')
-// 			.appendTo(parentDot);
-// 	});
-// });
 
+// document.addEventListener('DOMContentLoaded', function() {
+// 	if (window.outerWidth > 768) initFullPage();
+//
+// 	window.addEventListener('resize', function() {
+// 		var modal = document.querySelector('.modal')
+// 		if (window.outerWidth <= 768) {
+// 			console.log(fullPageScroll);
+//
+// 			if (fullPageScroll) {
+// 				fullPageScroll = false;
+// 				fullpage.destroy('all');
+// 			}
+// 		} else {
+// 			initFullPage();
+//
+// 			if (modal.length) fullpage.setAutoScrolling(false);
+// 		}
+// 	})
+//
+// 	function initFullPage() {
+// 		if (fullPageScroll === false) {
+// 			fullPageScroll = true;
+//
+// 			console.log('initializing full page');
+//
+// 			fullpage.initialize('#fullpage', {
+// 				navigation: true,
+// 				scrollingSpeed: 600,
+// 				scrollBar: true,
+// 				autoScrolling: true,
+// 				easing: 'easeInOutCubic',
+// 				sectionSelector: '.section',
+//
+// 				onLeave: function(index, nextIndex, direction) {
+// 					var navBar = document.querySelector('nav');
+//
+// 					if (index == 1 && direction == 'down') {
+// 						navBar.classList.add('visible');
+// 					}
+//
+// 					if (index == 2 && direction == 'up' || nextIndex == 1) {
+// 						navBar.classList.remove('visible');
+// 					}
+// 				},
+// 			})
+//
+// 		}
+// 	}
+// });
 
 document.addEventListener('DOMContentLoaded', function() {
 	var sections  = document.querySelectorAll('.section');
 	var hoverDot = document.querySelector('.hover-dot');
 	var closeBtn = document.querySelector('.tool-top__close');
+	var limitToolTip = (window.outerWidth < 768 ? true : false);
+	var resizeTimeout;
+
+	window.addEventListener('resize', function(e) {
+		clearTimeout(resizeTimeout);
+		resizeTimeout = setTimeout(function() {
+			limitToolTip = (window.outerWidth < 768 ? true : false);
+		});
+	});
 
 	Object.keys(sections)
 		.map(function(i) {
-			sections[i].addEventListener('click', toggleToolTip)
+			sections[i].addEventListener('click', handleClick)
 		});
 
-	function toggleToolTip(e) {
-		var _this 	= e.target;
+	function handleClick(e) {
+		var _this = e.target;
 
 		if (_this.classList.contains('hover-dot')) {
-			var id 			= _this.getAttribute('id');
-			var toolTip = _this.childNodes[0];
-
-			toolTip.setAttribute('data-parent', id);
-			toolTip.classList.add('active');
-
-			_this.parentNode.appendChild(toolTip);
-			_this.classList.add('paused');
+			if (!limitToolTip) {
+				openToolTip(_this);
+			} else {
+				if (document.getElementsByClassName('tooltip active').length) closeToolTip(_this);
+				openToolTip(_this);
+			}
 		}
 
-		if (_this.classList.contains('tooltip__close')) {
-			var toolTip 	= _this.parentNode;
-			var id 				= toolTip.getAttribute('data-parent');
-			var parentDot = document.getElementById(id);
+		if (_this.classList.contains('tooltip__close')) closeToolTip(_this);
+	}
 
-			toolTip.classList.remove('active');
-			parentDot.classList.remove('paused');
-			parentDot.appendChild(toolTip);
-		}
+	function openToolTip(el) {
+		var id = el.getAttribute('id');
+		var toolTip = el.childNodes[0];
+
+		toolTip.setAttribute('data-parent', id);
+		toolTip.classList.add('active');
+
+		el.parentNode.appendChild(toolTip);
+		el.classList.add('paused');
+	}
+
+	function closeToolTip(el) {
+		var toolTip 	= (el.classList.contains('tooltip__close')) ? el.parentNode : document.querySelector('.tooltip.active');
+		var id 				= toolTip.getAttribute('data-parent');
+		var parentDot = document.getElementById(id);
+
+		toolTip.classList.remove('active');
+		parentDot.classList.remove('paused');
+		parentDot.appendChild(toolTip);
 	}
 });
 

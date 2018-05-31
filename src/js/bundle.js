@@ -5428,6 +5428,7 @@ $(document).ready(function () {
 			document.removeEventListener('resize', this.windowResize);
 		},
 
+
 		methods: {
 			closeButton: function closeButton() {
 				this.clearInfoWindow();

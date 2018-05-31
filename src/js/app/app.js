@@ -42,6 +42,7 @@ $(document).ready(function() {
 		destroyed() {
 		  document.removeEventListener('resize', this.windowResize);
 		},
+		
 		methods: {
 			closeButton: function() {
 				this.clearInfoWindow();
