@@ -38,7 +38,6 @@
 	height: auto;
 	padding: 10px 10px 0;
 	position: absolute;
-	// transition: visibility 0s linear 300ms, opacity 300ms;
 	opacity: 0;
 	visibility: hidden;
 
@@ -48,7 +47,6 @@
 	}
 
 	&.active {
-		// transition: visibility 0s linear 300ms, opacity 300ms;
 		visibility: hidden;
 		opacity: 0;
 
@@ -68,9 +66,7 @@
 }
 
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
+  0% { opacity: 0; }
   100% {
     visibility: visible;
     opacity: 1;

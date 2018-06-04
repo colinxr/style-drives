@@ -811,22 +811,26 @@ h3 {
     -webkit-transform: rotate(1800deg);
             transform: rotate(1800deg); } }
 
+#header {
+  display: none; }
+  @media (min-width: 768px) {
+    #header {
+      display: block; } }
+
 #ad {
   display: none; }
   @media (min-width: 768px) {
     #ad {
       display: block;
       background-color: #eaeaea;
-      height: 296px;
       padding: 24px;
-      width: 100%;
+      width: 100vw;
       z-index: 999; } }
   @media (min-width: 768px) {
     #ad .billboard {
       background-color: gray;
-      height: 250px;
-      width: 970px;
-      margin: 0 auto; } }
+      margin: 0 auto;
+      width: 970px; } }
 
 nav {
   background-color: black;
@@ -1008,7 +1012,7 @@ nav {
     .hero__wrapper {
       display: grid;
       grid-template-columns: 1fr 56%;
-      height: calc(100% - 296px); } }
+      height: 100vh; } }
 
 .hero__content {
   display: block;
@@ -1068,19 +1072,19 @@ nav {
         -webkit-filter: grayscale(100%);
                 filter: grayscale(100%);
         height: calc(100vh - 110px); } }
-  .section:nth-of-type(2) {
+  .section:nth-of-type(3) {
     background-image: url("../imgs/kia-stinger-bag-opt.jpg");
     background-position: center center;
     background-size: cover; }
-  .section:nth-of-type(4) {
+  .section:nth-of-type(5) {
     background-image: url("../imgs/kia-stinger-3-opt.jpg");
     background-position: center center;
     background-size: cover; }
-  .section:nth-of-type(5) {
+  .section:nth-of-type(6) {
     background-image: url("../imgs/kia-stinger-drake-commissary-opt.jpg");
     background-position: center center;
     background-size: cover; }
-  .section:nth-of-type(7) {
+  .section:nth-of-type(8) {
     background-image: url("../imgs/kia-stinger-good-neighbour-opt.jpg");
     background-position: center center;
     background-size: cover; }
@@ -1443,10 +1447,10 @@ nav {
     .modal__content__copy {
       padding-bottom: 45px;
       -ms-overflow-style: none; }
-      .modal__content__copy p {
-        line-height: 18pt; }
       .modal__content__copy::-webkit-scrollbar {
         display: none; }
+      .modal__content__copy p {
+        line-height: 18pt; }
   .modal #map {
     position: relative;
     width: 100%;
@@ -1467,7 +1471,7 @@ nav {
       margin: 0 auto;
       padding: 5px;
       position: absolute;
-      left: 20%;
+      left: 25%;
       transition: background-color .15s;
       width: 200px; }
       .modal #map .map__cta:hover {

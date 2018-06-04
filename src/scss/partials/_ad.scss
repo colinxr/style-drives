@@ -1,3 +1,9 @@
+#header {
+	display: none;
+
+	@include tablet { display: block; } 
+}
+
 #ad {
 	display: none;
 
@@ -6,7 +12,7 @@
 		display: block;
 		background-color: #eaeaea;
 		padding: 24px;
-		width: 100%;
+		width: 100vw;
 		z-index: 999;
 	}
 
@@ -15,6 +21,7 @@
 		@include tablet {
 			background-color: gray;
 			margin: 0 auto;
+			width: 970px;
 		}
 	}
 }

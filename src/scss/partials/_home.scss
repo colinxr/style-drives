@@ -7,7 +7,8 @@
 		@include tablet {
 			display: grid;
 			grid-template-columns: 1fr 56%;
-			height: calc(100% - 296px);
+			// height: calc(100% - 296px);
+			height: 100vh;
 		}
 	}
 
@@ -31,7 +32,6 @@
 
 	&__img {
 		background-color: $orange;
-		// background-image: url('../imgs/kia-stinger-vertical-2.jpg');
 		background-position: center 35%;
 		background-size: cover;
 		display: block;
@@ -83,31 +83,29 @@
 			height: calc(100vh - 110px); }
 		}
 
-  &:nth-of-type(2) {
+  &:nth-of-type(3) {
 		background-image: url('../imgs/kia-stinger-bag-opt.jpg');
     background-position: center center;
     background-size: cover;
   }
 
-  &:nth-of-type(4) {
+  &:nth-of-type(5) {
     background-image: url('../imgs/kia-stinger-3-opt.jpg');
     background-position: center center;
     background-size: cover;
   }
-  &:nth-of-type(5) {
+  &:nth-of-type(6) {
     background-image: url('../imgs/kia-stinger-drake-commissary-opt.jpg');
     background-position: center center;
     background-size: cover;
   }
-  &:nth-of-type(7) {
+  &:nth-of-type(8) {
     background-image: url('../imgs/kia-stinger-good-neighbour-opt.jpg');
     background-position: center center;
     background-size: cover;
   }
 
-	&.active {
-		filter: grayscale(0%);
-	}
+	&.active { filter: grayscale(0%); }
 
 	&--padding {
 		height: auto;

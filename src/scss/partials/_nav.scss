@@ -49,9 +49,7 @@ nav {
 			span {
 				cursor: pointer;
 
-				&:hover {
-					color: darken(white, 20%);
-				}
+				&:hover { color: darken(white, 20%); }
 			}
 		}
   }

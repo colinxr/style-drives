@@ -10,9 +10,7 @@
 	width: 90%;
 	z-index: 99;
 
-	@include tablet {
-		border: none;
-	}
+	@include tablet { border: none; }
 
 	&__content {
 		background-color: white;
@@ -48,23 +46,14 @@
 		}
 
 		&__copy {
-			// overflow: -moz-scrollbars-vertical !important;
 			padding-bottom: 45px;
-
-			p {
-				line-height: 18pt;
-
-				&:first-child{
-					&:first-letter {
-					}
-				}
-			}
-
 			-ms-overflow-style: none;  // IE 10+
-	 		// overflow: -moz-scrollbars-none;  // Firefox
+
 			&::-webkit-scrollbar {
-    		display: none;  // Safari and Chrome
+				display: none;  // Safari and Chrome
 			}
+
+			p { line-height: 18pt; }
 		}
 	}
 
@@ -90,8 +79,7 @@
 			margin: 0 auto;
 			padding: 5px;
 			position: absolute;
-			left: 20%;
-			// right: 50%;
+			left: 25%;
 			transition: background-color .15s;
 			width: 200px;
 
@@ -132,7 +120,6 @@
 }
 
 .modal-open {
-	// position: relative;
 	&:after {
 	  position: absolute;
 		background-color: black;
