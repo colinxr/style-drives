@@ -27,22 +27,20 @@ $(document).ready(function() {
 			console.log('initializing full page');
 
 			$('#fullpage').fullpage({
+				autoScrolling: true,
 				navigation: true,
 				scrollingSpeed: 600,
 				scrollBar: true,
-				autoScrolling: true,
-				// normalScrollElements: '#ad',
-				easing: 'easeInOutCubic',
 
 				onLeave: function(index, nextIndex, direction) {
 					var leavingSection = $(this);
 					var navBar = $('nav');
 
-					if (index == 1 && direction == 'down') {
+					if (index == 2 && direction == 'down') {
 						navBar.addClass('visible');
 					}
 
-					if (index == 2 && direction == 'up' || nextIndex == 1) {
+					if (index == 3 && direction == 'up' || nextIndex == 2) {
 						navBar.removeClass('visible');
 					}
 
