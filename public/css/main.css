@@ -1053,6 +1053,9 @@ nav {
 
 .section {
   background-color: #fafafa;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
   display: block;
   height: auto;
   padding-top: 100%;
@@ -1073,21 +1076,22 @@ nav {
                 filter: grayscale(100%);
         height: calc(100vh - 110px); } }
   .section:nth-of-type(3) {
-    background-image: url("../imgs/kia-stinger-bag-opt.jpg");
-    background-position: center center;
-    background-size: cover; }
+    background-image: url("../imgs/kia-stinger-bag-opt.jpg"); }
   .section:nth-of-type(5) {
-    background-image: url("../imgs/kia-stinger-3-opt.jpg");
-    background-position: center center;
-    background-size: cover; }
+    background-image: url("../imgs/kia-stinger-3.jpg"); }
+    @media (min-width: 768px) and (min-height: 680px) and (max-height: 800px) {
+      .section:nth-of-type(5) {
+        background-size: 88%; } }
   .section:nth-of-type(6) {
-    background-image: url("../imgs/kia-stinger-drake-commissary-opt.jpg");
-    background-position: center center;
-    background-size: cover; }
+    background-image: url("../imgs/kia-stinger-drake-commissary-opt.jpg"); }
+    @media (min-width: 768px) and (min-height: 680px) and (max-height: 800px) {
+      .section:nth-of-type(6) {
+        background-size: 88%; } }
   .section:nth-of-type(8) {
-    background-image: url("../imgs/kia-stinger-good-neighbour-opt.jpg");
-    background-position: center center;
-    background-size: cover; }
+    background-image: url("../imgs/kia-stinger-good-neighbour-opt.jpg"); }
+    @media (min-width: 768px) and (min-height: 680px) and (max-height: 800px) {
+      .section:nth-of-type(8) {
+        background-size: 88%; } }
   .section.active {
     -webkit-filter: grayscale(0%);
             filter: grayscale(0%); }
@@ -1112,9 +1116,9 @@ nav {
           -webkit-transform: translateY(-3%);
                   transform: translateY(-3%); } }
     .section__inset.garrison {
-      background-image: url("../imgs/kia-stinger-garrison-bespoke-opt.jpg"); }
+      background-image: url("../imgs/kia-stinger-garrison-bespoke.jpg"); }
     .section__inset.walking {
-      background-image: url("../imgs/kia-stinger-5-opt.jpg"); }
+      background-image: url("../imgs/kia-stinger-5.jpg"); }
   .section--nav {
     color: white;
     background-color: #646464;

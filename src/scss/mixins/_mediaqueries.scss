@@ -2,7 +2,7 @@ $tablet-width: 768px;
 $desktop-width: 1024px;
 
 @mixin tablet {
-  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+  @media (min-width: #{$tablet-width}) {
     @content;
   }
 }
@@ -13,8 +13,25 @@ $desktop-width: 1024px;
   }
 }
 
+@mixin small-display {
+	@media
+	(min-width: #{$tablet-width}) and
+	(min-height: 680px) and 
+	(max-height: 800px) {
+		@content;
+	}
+}
+
 @mixin breakpoint($px) {
 	@media (max-width: #{$px}) {
 		@content;
 	}
 }
+
+// @mixin small-display {
+// 	// @media (min-width: #{$tablet-width}) and (min-height: 680px) and (max-height: 800px) {
+// 	// 	@content;
+// 	// }
+//
+// 	background-color: pink;
+// }
