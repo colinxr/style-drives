@@ -88,6 +88,17 @@
 
   &:nth-of-type(3) {
 		background-image: url('../imgs/kia-stinger-bag-opt.jpg');
+
+		// background:
+		//     url('../imgs/kia-stinger-bag-opt.jpg') no-repeat center center,
+		// 		linear-gradient(145deg, #eea849 0%, $orange 100%) no-repeat center center;
+		//
+		// background-size: cover;
+		// background-repeat: no-repeat;
+		//
+		// @include small-display {
+		// 	background-size: 85%, 120%;
+		// }
   }
 
   &:nth-of-type(5) {
@@ -96,7 +107,7 @@
 		background-size: cover;
 
 		@include small-display {
-			background-size: 91%, 120%;
+			background-size: 90%, 120%;
 		}
   }
 
@@ -108,7 +119,7 @@
 		background-repeat: no-repeat;
 
 		@include small-display {
-			background-size: 91%, 120%;
+			background-size: 90%, 120%;
 		}
   }
 
@@ -119,10 +130,10 @@
 
 		background-size: cover;
 		background-repeat: no-repeat;
-
-		@include small-display {
-			background-size: 91%, 120%;
-		}
+		//
+		// @include small-display {
+		// 	background-size: 90%, 120%;
+		// }
   }
 
 	&.active { filter: grayscale(0%); }

@@ -1080,23 +1080,20 @@ nav {
   .section:nth-of-type(5) {
     background: url("../imgs/kia-stinger-3-opt.jpg") no-repeat center center, linear-gradient(145deg, #eea849 0%, #F04B33 100%) center center;
     background-size: cover; }
-    @media (min-width: 768px) and (min-height: 680px) and (max-height: 800px) {
+    @media (min-width: 768px) and (min-aspect-ratio: 10 / 6) {
       .section:nth-of-type(5) {
-        background-size: 91%, 120%; } }
+        background-size: 90%, 120%; } }
   .section:nth-of-type(6) {
     background: url("../imgs/kia-stinger-drake-commissary-opt.jpg") no-repeat center center, linear-gradient(145deg, #eea849 0%, #F04B33 100%) no-repeat center center;
     background-size: cover;
     background-repeat: no-repeat; }
-    @media (min-width: 768px) and (min-height: 680px) and (max-height: 800px) {
+    @media (min-width: 768px) and (min-aspect-ratio: 10 / 6) {
       .section:nth-of-type(6) {
-        background-size: 91%, 120%; } }
+        background-size: 90%, 120%; } }
   .section:nth-of-type(8) {
     background: url("../imgs/kia-stinger-good-neighbour-opt.jpg") no-repeat center center, linear-gradient(145deg, #eea849 0%, #F04B33 100%) no-repeat center center;
     background-size: cover;
     background-repeat: no-repeat; }
-    @media (min-width: 768px) and (min-height: 680px) and (max-height: 800px) {
-      .section:nth-of-type(8) {
-        background-size: 91%, 120%; } }
   .section.active {
     -webkit-filter: grayscale(0%);
             filter: grayscale(0%); }
